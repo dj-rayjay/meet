@@ -1,308 +1,627 @@
+/* line 5, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 6, sass/main.scss */
 * {
-    -webkit-user-select: none;
-    user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
-html, body{
-    margin:0px;
-    height:100%;
-    color: #424242;
-    font-family:'Helvetica Neue', Helvetica, sans-serif;
-    font-weight: 400;
-    background: #000000;
-    overflow-x: hidden;
+/* line 11, sass/main.scss */
+html {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
 }
 
-#chatspace,
-#contactlist {
-    display:none;
-    position:absolute;
-    float: right;
-    top: 0px;
-    bottom: 0px;
-    right: 0px;
-    width: 20%;
-    max-width: 200px;
-    overflow: hidden;
-    /* background-color:#dfebf1;*/
-    background-color:#FFFFFF;
-    border-left:1px solid #424242;
-    z-index: 5;
+/* line 18, sass/main.scss */
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 300;
+  color: #333333;
+  /* background: black; */
+  background: #9172d5;
+  font-family: "Raleway", Helvetica, sans-serif;
 }
 
-#settings {
-    display:none;
+/* line 30, sass/main.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Raleway", Helvetica, sans-serif;
+  font-weight: 100;
+  color: white;
+  margin: 0;
+  text-rendering: optimizelegibility;
 }
 
-#nowebrtc {
-    display:none;
+/* line 38, sass/main.scss */
+h1 {
+  font-size: 50px;
+  line-height: 1.2em;
+  margin-bottom: 1em;
 }
 
-#settingsButton {
-    visibility: hidden;
+/* line 44, sass/main.scss */
+h2 {
+  font-size: 26px;
+  line-height: 1.2em;
+  margin-bottom: 0.5em;
 }
 
-.toolbar_span {
-    display: inline-block;
-    position: relative;
+/* line 50, sass/main.scss */
+h3 {
+  font-size: 21px;
+  line-height: 1.2em;
+  margin-bottom: 0.3em;
 }
 
-.button {
-    display: inline-block;
-    position: relative;
-    color: #FFFFFF;
-    top: 0px;
-    padding: 10px 0px;
-    width: 38px;
-    cursor: pointer;
-    font-size: 11pt;
-    text-align: center;
-    text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.6);
-    z-index: 1;
+/* line 56, sass/main.scss */
+h4 {
+  font-size: 18px;
+  line-height: 1.12em;
+  margin-bottom: 0.3em;
 }
 
-.toolbar_span>span {
-    display: inline-block;
-    position: absolute;
-    font-size: 7pt;
-    color: #ffffff;
-    text-align:center;
-    cursor: pointer;
+/* line 62, sass/main.scss */
+h5 {
+  font-size: 16px;
+  line-height: 1.1em;
+  margin-bottom: 0.3em;
 }
 
-#chatButton, #chatBottomButton, #contactListButton {
-    -webkit-transition: all .5s ease-in-out;
-       -moz-transition: all .5s ease-in-out;
-            transition: all .5s ease-in-out;
-}
-/*#ffde00*/
-#chatButton.active, #contactListButton.glowing, #chatBottomButton.glowing {
-    -webkit-text-shadow:    -1px 0 10px #00ccff,
-                            0 1px 10px #00ccff,
-                            1px 0 10px #00ccff,
-                            0 -1px 10px #00ccff;
-    -moz-text-shadow:   1px 0 10px #00ccff,
-                        0 1px 10px #00ccff,
-                        1px 0 10px #00ccff,
-                        0 -1px 10px #00ccff;
-    text-shadow:    -1px 0 10px #00ccff,
-                    0 1px 10px #00ccff,
-                    1px 0 10px #00ccff,
-                    0 -1px 10px #00ccff;
+/* line 68, sass/main.scss */
+h6 {
+  font-size: 14px;
+  line-height: 1.1em;
+  margin-bottom: 0.3em;
 }
 
-#numberOfParticipants {
-    position: absolute;
-    top: 0px;
-    right: -1;
-    color: white;
-    width: 13px;
-    height: 13px;
-    line-height: 13px;
-    font-weight: bold;
-    border-radius: 2px;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+/* line 74, sass/main.scss */
+p {
+  margin-top: 0;
+  margin-bottom: 1.5em;
+  line-height: 21px;
 }
 
-#recordButton {
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
-}
-/*#ffde00*/
-#recordButton.active {
-    -webkit-text-shadow:    -1px 0 10px #00ccff,
-    0 1px 10px #00ccff,
-    1px 0 10px #00ccff,
-    0 -1px 10px #00ccff;
-    -moz-text-shadow:   1px 0 10px #00ccff,
-    0 1px 10px #00ccff,
-    1px 0 10px #00ccff,
-    0 -1px 10px #00ccff;
-    text-shadow:    -1px 0 10px #00ccff,
-    0 1px 10px #00ccff,
-    1px 0 10px #00ccff,
-    0 -1px 10px #00ccff;
+/* line 80, sass/main.scss */
+ul, ol {
+  list-style-position: outside;
+  margin-bottom: 0;
+  padding: 0;
 }
 
-a.button:hover,
-a.bottomToolbarButton:hover {
-    top: 0px;
-    cursor: pointer;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-    background-clip: padding-box;
-    -webkit-border-radius: 6px;
-    -webkit-background-clip: padding-box;
+/* line 86, sass/main.scss */
+li {
+  margin-bottom: 0.5em;
+  list-style: none;
 }
 
-.no-fa-video-camera, .fa-microphone-slash {
-    color: #636363;
+/* line 91, sass/main.scss */
+a {
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  color: white;
+  text-decoration: none;
+}
+/* line 99, sass/main.scss */
+a:hover {
+  color: #d9d9d9;
 }
 
-.header_button_separator {
-    display: inline-block;
-    position:relative;
-    top: 5;
-    width: 1px;
-    height: 20px;
-    background: #373737;
-}
-
-.bottom_button_separator {
-    display: inline-block;
-    position: relative;
-    left: 5;
-    width: 20px;
-    height: 1px;
-    background: #373737;
-}
-
-input[type='text'], input[type='password'], textarea {
-    display: inline-block;
-    font-size: 14px;
-    padding: 5px;
-    background: #f3f3f3;
-    border-radius: 3px;
-    font-weight: 100;
-    line-height: 20px;
-    height: 40px;
-    color: #333;
-    text-align: left;
-    border:1px solid #ACD8F0;
-    outline: none; /* removes the default outline */
-    resize: none; /* prevents the user-resizing, adjust to taste */
-}
-
-input[type='text'], input[type='password'], textarea:focus {
-    box-shadow: inset 0 0 3px 2px #ACD8F0; /* provides a more style-able
-                                         replacement to the outline */
-}
-
+/* line 104, sass/main.scss */
 textarea {
-    overflow: hidden;
-    word-wrap: break-word;
-    resize: horizontal;
+  height: 100px;
 }
 
-button.no-icon {
-    padding: 0 1em;
+/*** jitsi ***/
+/* line 110, sass/main.scss */
+#chatspace, #contactlist {
+  display: none;
+  position: absolute;
+  float: right;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 20%;
+  max-width: 200px;
+  overflow: hidden;
+  background-color: #dfebf1;
+  /*background-color:#FFFFFF;*/
+  /*background-color: $main_purple;*/
+  border-left: 1px solid #424242;
+  z-index: 5;
 }
 
+/* line 127, sass/main.scss */
+#settings, #nowebrtc {
+  display: none;
+}
+
+/* line 131, sass/main.scss */
+#settingsButton {
+  visibility: hidden;
+}
+
+/* line 135, sass/main.scss */
+.toolbar_span {
+  display: inline-block;
+  position: relative;
+}
+
+/* line 140, sass/main.scss */
+.button {
+  display: inline-block;
+  position: relative;
+  color: #FFFFFF;
+  top: 0;
+  padding: 10px 0;
+  width: 38px;
+  cursor: pointer;
+  font-size: 11pt;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3), 0 -1px 0 rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+/* line 154, sass/main.scss */
+.toolbar_span > span {
+  display: inline-block;
+  position: absolute;
+  font-size: 7pt;
+  color: #ffffff;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* line 163, sass/main.scss */
+#chatButton, #chatBottomButton, #contactListButton {
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+
+/*#ffde00*/
+/* line 171, sass/main.scss */
+#chatButton.active, #contactListButton.glowing, #chatBottomButton.glowing {
+  -webkit-text-shadow: -1px 0 10px #00ccff, 0 1px 10px #00ccff, 1px 0 10px #00ccff, 0 -1px 10px #00ccff;
+  -moz-text-shadow: 1px 0 10px #00ccff, 0 1px 10px #00ccff, 1px 0 10px #00ccff, 0 -1px 10px #00ccff;
+  text-shadow: -1px 0 10px #00ccff, 0 1px 10px #00ccff, 1px 0 10px #00ccff, 0 -1px 10px #00ccff;
+}
+
+/* line 177, sass/main.scss */
+#numberOfParticipants {
+  position: absolute;
+  top: 0;
+  right: -1px;
+  color: white;
+  width: 13px;
+  height: 13px;
+  line-height: 13px;
+  font-weight: bold;
+  border-radius: 2px;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+/* line 190, sass/main.scss */
+#recordButton {
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+/* line 194, sass/main.scss */
+#recordButton.active {
+  -webkit-text-shadow: -1px 0 10px #00ccff, 0 1px 10px #00ccff, 1px 0 10px #00ccff, 0 -1px 10px #00ccff;
+  -moz-text-shadow: 1px 0 10px #00ccff, 0 1px 10px #00ccff, 1px 0 10px #00ccff, 0 -1px 10px #00ccff;
+  text-shadow: -1px 0 10px #00ccff, 0 1px 10px #00ccff, 1px 0 10px #00ccff, 0 -1px 10px #00ccff;
+}
+
+/*#ffde00*/
+/* line 204, sass/main.scss */
+a.button:hover, a.bottomToolbarButton:hover {
+  top: 0;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  background-clip: padding-box;
+  -webkit-border-radius: 6px;
+  -webkit-background-clip: padding-box;
+}
+
+/* line 215, sass/main.scss */
+.no-fa-video-camera, .fa-microphone-slash {
+  color: #636363;
+}
+
+/* line 219, sass/main.scss */
+.header_button_separator {
+  display: inline-block;
+  position: relative;
+  top: 5px;
+  width: 1px;
+  height: 20px;
+  background: #373737;
+}
+
+/* line 228, sass/main.scss */
+.bottom_button_separator {
+  display: inline-block;
+  position: relative;
+  left: 5px;
+  width: 20px;
+  height: 1px;
+  background: #373737;
+}
+
+/* line 238, sass/main.scss */
+input[type='text'], input[type='password'] {
+  display: inline-block;
+  font-size: 14px;
+  padding: 5px;
+  background: #444B73;
+  border-radius: 3px;
+  font-weight: 100;
+  line-height: 20px;
+  height: 40px;
+  color: #ffffff;
+  text-align: left;
+  /*border:1px solid #ACD8F0;*/
+  outline: none;
+  /* removes the default outline */
+  resize: none;
+  /* prevents the user-resizing, adjust to taste */
+}
+
+/* line 257, sass/main.scss */
+textarea {
+  display: inline-block;
+  font-size: 14px;
+  padding: 5px;
+  background: #444B73;
+  border-radius: 3px;
+  font-weight: 100;
+  line-height: 20px;
+  height: 40px;
+  color: #ffffff;
+  text-align: left;
+  /*border:1px solid #ACD8F0;*/
+  outline: none;
+  /* removes the default outline */
+  resize: none;
+  /* prevents the user-resizing, adjust to taste */
+}
+
+/* line 276, sass/main.scss */
+input[type='text'], input[type='password'] {
+  box-shadow: inset 0 0 1px 1px #3c108e;
+  /* provides a more style-able
+  replacement to the outline */
+}
+
+/* line 283, sass/main.scss */
+textarea {
+  overflow: hidden;
+  word-wrap: break-word;
+  resize: horizontal;
+}
+/* line 284, sass/main.scss */
+textarea:focus {
+  box-shadow: inset 0 0 1px 1px #3c108e;
+  /* provides a more style-able
+  replacement to the outline */
+}
+
+/* line 294, sass/main.scss */
 button {
-    border: none;
-    height: 35px;
-    padding: 0 1em 0 2em;
-    position: relative;
-    border-radius: 3px;
-    font-weight: bold;
-    color: #fff;
-    line-height: 35px;
-    background: #2c8ad2;
+  border: none;
+  height: 35px;
+  padding: 0 1em 0 2em;
+  position: relative;
+  border-radius: 3px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 35px;
+  background: #2c8ad2;
+  margin: 0;
+  vertical-align: baseline;
+}
+/* line 295, sass/main.scss */
+button.no-icon {
+  padding: 0 1em;
 }
 
-button, input, select, textarea {
-    margin: 0;
-    vertical-align: baseline;
+/* line 311, sass/main.scss */
+input, select, textarea {
+  margin: 0;
+  vertical-align: baseline;
 }
 
-button, input[type="button"], input[type="reset"], input[type="submit"] {
-    cursor: pointer;
-    -webkit-appearance: button;
+/* line 316, sass/main.scss */
+button {
+  cursor: pointer;
+  -webkit-appearance: button;
 }
 
+/* line 322, sass/main.scss */
+input[type="button"], input[type="reset"], input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+
+/* line 328, sass/main.scss */
 form {
-    display: block;
+  display: block;
 }
 
+/* line 332, sass/main.scss */
 #downloadlog {
-    position: absolute;
-    bottom: 5;
-    left: 5;
-    overflow: visible;
-    z-index: 100;
-    color: rgba(255,255,255,.50);
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  overflow: visible;
+  z-index: 100;
+  color: rgba(255, 255, 255, 0.5);
 }
 
+/* line 341, sass/main.scss */
 #bottomToolbar {
-    display:block;
-    position: absolute;
-    right: 0;
-    margin-right: 5px;
-    bottom: 40px;
-    width: 29px;
-    border-radius: 6px;
-    color: #FFF;
-    border: 1px solid rgba(256, 256, 256, 0.2);
-    background: rgba(0,0,0,0.8);
-    z-index: 6; /*+1 from #remoteVideos*/
+  /*display:block;*/
+  position: absolute;
+  right: 0;
+  margin-right: 5px;
+  bottom: 150px;
+  width: 29px;
+  border-radius: 6px;
+  color: #FFF;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 6;
+  /*+1 from #remoteVideos*/
 }
 
+/* line 356, sass/main.scss */
 .bottomToolbarButton {
-    display: inline-block;
-    position: relative;
-    color: #FFFFFF;
-    top: 0;
-    padding-top: 6px;
-    margin: 2px;
-    width: 25px;
-    height: 20px;
-    cursor: pointer;
-    font-size: 10pt;
-    text-align: center;
-    text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
-    z-index: 1;
+  display: inline-block;
+  position: relative;
+  color: #FFFFFF;
+  top: 0;
+  padding-top: 6px;
+  margin: 2px;
+  width: 25px;
+  height: 20px;
+  cursor: pointer;
+  font-size: 10pt;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3), 0 -1px 0 rgba(0, 0, 0, 0.7);
+  z-index: 1;
 }
 
+/* line 372, sass/main.scss */
 .active {
-    color: #00ccff;
+  color: #00ccff;
 }
 
-.bottomToolbar_span>span {
-    display: inline-block;
-    position: absolute;
-    font-size: 7pt;
-    color: #ffffff;
-    text-align: center;
-    cursor: pointer;
+/* line 376, sass/main.scss */
+.bottomToolbar_span > span {
+  display: inline-block;
+  position: absolute;
+  font-size: 7pt;
+  color: #ffffff;
+  text-align: center;
+  cursor: pointer;
 }
 
-.glow
-{
-    text-shadow: 0px 0px 30px #06a5df, 0px 0px 10px #06a5df, 0px 0px 5px #06a5df,0px 0px 3px #06a5df;
+/* line 385, sass/main.scss */
+.glow {
+  text-shadow: 0 0 30px #06a5df, 0 0 10px #06a5df, 0 0 5px #06a5df, 0 0 3px #06a5df;
 }
 
+/* line 389, sass/main.scss */
 .watermark {
-    display: block;
-    position: absolute;
-    top: 15;
-    width: 186px;
-    height: 74px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    z-index: 2;
+  display: block;
+  position: absolute;
+  top: 15px;
+  width: 130px;
+  height: 52px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 2;
 }
 
+/* line 400, sass/main.scss */
 .leftwatermark {
-    display: none;
-    left: 15;
-    background-image:url(../images/watermark.png);
-    background-position: center left;
+  display: none;
+  left: 15px;
+  background-image: url(../images/iparlo-logo.svg);
+  background-position: center left;
 }
 
+/* line 407, sass/main.scss */
 .rightwatermark {
-    display: none;
-    right: 15;
-    background-position: center right;
+  display: none;
+  right: 15px;
+  background-position: center right;
 }
 
+/* line 413, sass/main.scss */
 .poweredby {
-    display: none;
-    position: absolute;
-    left: 25;
-    bottom: 7;
-    font-size: 11pt;
-    color: rgba(255,255,255,.50);
-    text-decoration: none;
-    z-index: 100;
+  display: none;
+  position: absolute;
+  left: 25px;
+  bottom: 7px;
+  font-size: 11pt;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  z-index: 100;
+}
+
+/************** TO iparlo *********/
+/* line 426, sass/main.scss */
+li {
+  margin-bottom: 0.5em;
+  list-style: none;
+}
+
+/* line 431, sass/main.scss */
+.fullscreen {
+  color: #fff;
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  z-index: 5;
+}
+
+/* line 439, sass/main.scss */
+.nav-option {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #444B73;
+  z-index: 10;
+  border-radius: 0 10px 0 0;
+  padding-bottom: 20px;
+}
+/* line 447, sass/main.scss */
+.nav-option li {
+  position: relative;
+}
+/* line 450, sass/main.scss */
+.nav-option span {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 1px;
+  display: block;
+  position: absolute;
+  top: 15px;
+  left: 40px;
+  margin-left: 10px;
+  width: 200px;
+  color: #fff;
+  opacity: 0;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+/* line 469, sass/main.scss */
+.nav-option a {
+  display: block;
+  padding: 10px 15px 10px 10px;
+  color: #fff;
+  position: relative;
+}
+/* line 474, sass/main.scss */
+.nav-option a:hover {
+  color: #9172d5;
+}
+/* line 476, sass/main.scss */
+.nav-option a:hover + span {
+  opacity: 1;
+  left: 55px;
+}
+
+/* line 484, sass/main.scss */
+.close-session {
+  position: absolute;
+  right: 20px;
+  bottom: 160px;
+  z-index: 5;
+}
+/* line 489, sass/main.scss */
+.close-session span {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  position: relative;
+  top: -2px;
+  opacity: 0;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  right: -10px;
+}
+/* line 504, sass/main.scss */
+.close-session a {
+  color: #fff;
+  border-radius: 7px;
+}
+/* line 507, sass/main.scss */
+.close-session a:hover {
+  color: #ddd;
+}
+/* line 509, sass/main.scss */
+.close-session a:hover span {
+  opacity: 1;
+  right: 0;
 }

@@ -1,6 +1,7 @@
 #chatspace {
-    background-color: black;
-    border-left: 1px solid #424242;
+    /* background-color: black;*/
+    background-color: #9172D5;
+    border-left: 0; /* 1px solid #424242 */
 }
 
 #chatspace * {
@@ -46,8 +47,8 @@
     max-height:150px;
     min-height:35px;
     border: 0px none;
-    background: #3a3a3a;
-    color: #a7a7a7;
+    background:  #444B73;
+    color: #ffffff;
     box-shadow: none;
     border-radius:0;
     font-size: 10pt;
@@ -163,7 +164,7 @@
     max-height:150px;
     min-height:35px;
     border: 0px none;
-    background: #3a3a3a;
+    background:  #444B73;
     overflow: hidden;
     visibility: hidden;
 }
@@ -171,7 +172,7 @@
 #smileysContainer {
     display: none;
     position: absolute;
-    background: #3a3a3a;
+    background:  #444B73;
     border-bottom: 1px solid;
     border-top: 1px solid;
     width: 100%;
@@ -189,35 +190,43 @@
 }
 
 .smileyContainer:hover {
-    background: #3e3e3e;
+    background:  #444B73;
 }
 
 #usermsg::-webkit-input-placeholder {
     line-height: 30px;
 }
 
-::-webkit-scrollbar {
-    background: #06a5df;
+#chatconversation::-webkit-scrollbar {
+    background: #9172D5;
     width: 7px;
 }
 
-::-webkit-scrollbar-button {
+#chatconversation::-webkit-scrollbar-button {
     display: none;
 }
 
-::-webkit-scrollbar-track {
-    background: black;
+#chatconversation::-webkit-scrollbar-track {
+    background:  #9172D5;
 }
 
-::-webkit-scrollbar-track-piece {
-    background: black;
+#chatconversation::-webkit-scrollbar-track-piece {
+    background: #9172D5;
 }
 
-::-webkit-scrollbar-thumb {
-    background: #06a5df;
+#chatconversation::-webkit-scrollbar-thumb {
+    background: #06A5DF;
     border-radius: 4px;
 }
 
+#usermsg::-webkit-scrollbar-track {
+    background: #444B73;
+}
+
 #usermsg::-webkit-scrollbar-track-piece {
-    background: #3a3a3a;
+    background: #444B73;
+}
+
+#usermsg::-webkit-scrollbar-thumb {
+    background: #06A5DF;
 }

@@ -33,9 +33,9 @@ var BottomToolbar = (function (my) {
     };
 
     $(document).bind("remotevideo.resized", function (event, width, height) {
-        var bottom = (height - $('#bottomToolbar').outerHeight())/2 + 18;
-
-        $('#bottomToolbar').css({bottom: bottom + 'px'});
+        var bottom = (height - $('#localMute').outerHeight())/2;
+        // TO: iparlo
+        $('#localMute').css({bottom: bottom + 'px'});
     });
 
     return my;

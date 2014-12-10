@@ -353,18 +353,18 @@ var Chat = (function (my) {
      * Shows/hides a visual notification, indicating that a message has arrived.
      */
     function setVisualNotification(show) {
-        var unreadMsgElement = document.getElementById('unreadMessages');
+        //var unreadMsgElement = document.getElementById('unreadMessages');
         var unreadMsgBottomElement = document.getElementById('bottomUnreadMessages');
 
         var glower = $('#chatButton');
         var bottomGlower = $('#chatBottomButton');
 
         if (unreadMessages) {
-            unreadMsgElement.innerHTML = unreadMessages.toString();
+            //unreadMsgElement.innerHTML = unreadMessages.toString();
             unreadMsgBottomElement.innerHTML = unreadMessages.toString();
 
-            ToolbarToggler.dockToolbar(true);
-
+            //ToolbarToggler.dockToolbar(true);
+            /*
             var chatButtonElement
                 = document.getElementById('chatButton').parentNode;
             var leftIndent = (Util.getTextWidth(chatButtonElement) -
@@ -376,6 +376,7 @@ var Chat = (function (my) {
                 'style',
                     'top:' + topIndent +
                     '; left:' + leftIndent + ';');
+            */
 
             var chatBottomButtonElement
                 = document.getElementById('chatBottomButton').parentNode;
@@ -390,13 +391,13 @@ var Chat = (function (my) {
                     '; left:' + bottomLeftIndent + ';');
 
 
-            if (!glower.hasClass('icon-chat-simple')) {
-                glower.removeClass('icon-chat');
-                glower.addClass('icon-chat-simple');
-            }
+            //if (!glower.hasClass('icon-chat-simple')) {
+            //    glower.removeClass('icon-chat');
+            //    glower.addClass('icon-chat-simple');
+            //}
         }
         else {
-            unreadMsgElement.innerHTML = '';
+            //unreadMsgElement.innerHTML = '';
             unreadMsgBottomElement.innerHTML = '';
             glower.removeClass('icon-chat-simple');
             glower.addClass('icon-chat');

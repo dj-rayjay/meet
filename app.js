@@ -931,6 +931,13 @@ function getConferenceHandler() {
     return focus ? focus : activecall;
 }
 
+
+$( "#localMute" ).click(function( event ) {
+    event.stopPropagation();
+    // Do something
+});
+
+
 function toggleVideo() {
     buttonClick("#video", "icon-camera icon-camera-disabled");
     if (!(connection && connection.jingle.localVideo))
@@ -941,11 +948,11 @@ function toggleVideo() {
         sess.toggleVideoMute(
             function (isMuted) {
                 if (isMuted) {
-                    $('#video').removeClass("icon-camera");
-                    $('#video').addClass("icon-camera icon-camera-disabled");
+                    $('#videoMute').removeClass("icon-videocam");
+                    $('#videoMute').addClass("jicon-camera-disabled");
                 } else {
-                    $('#video').removeClass("icon-camera icon-camera-disabled");
-                    $('#video').addClass("icon-camera");
+                    $('#videoMute').removeClass("jicon-camera-disabled");
+                    $('#videoMute').addClass("icon-videocam");
                 }
                 connection.emuc.addVideoInfoToPresence(isMuted);
                 connection.emuc.sendPresence();
@@ -957,10 +964,14 @@ function toggleVideo() {
 /**
  * Mutes / unmutes audio for the local participant.
  */
+
+
 function toggleAudio() {
+    var audioEnabled;
+
     if (!(connection && connection.jingle.localAudio)) {
         // We still click the button.
-        buttonClick("#mute", "icon-microphone icon-mic-disabled");
+        buttonClick("#mute", "icon-microphone jicon-mic-disabled");
         return;
     }
 
@@ -969,7 +980,7 @@ function toggleAudio() {
     // that we send presence just once.
     var localAudioTracks = connection.jingle.localAudio.getAudioTracks();
     if (localAudioTracks.length > 0) {
-        var audioEnabled = localAudioTracks[0].enabled;
+        audioEnabled = localAudioTracks[0].enabled;
 
         for (var idx = 0; idx < localAudioTracks.length; idx++) {
             localAudioTracks[idx].enabled = !audioEnabled;
@@ -981,7 +992,14 @@ function toggleAudio() {
         VideoLayout.showLocalAudioIndicator(audioEnabled);
     }
 
-    buttonClick("#mute", "icon-microphone icon-mic-disabled");
+    if (!audioEnabled) {
+        $("#mute").removeClass("jicon-mic-disabled");
+        $("#mute").addClass("icon-micro" );
+    } else {
+        $("#mute").removeClass("icon-micro");
+        $("#mute").addClass("jicon-mic-disabled" );
+    }
+
 }
 
 /**
@@ -1299,7 +1317,10 @@ $(document).ready(function () {
             init();
         };
     }
+
 });
+
+
 
 $(window).bind('beforeunload', function () {
     if (connection && connection.connected) {

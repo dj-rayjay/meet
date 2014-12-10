@@ -639,7 +639,7 @@ var VideoLayout = (function (my) {
                 }
 
                 editableText.setAttribute('style', 'display:none;');
-                editableText.setAttribute('placeholder', 'ex. Jane Pink');
+                editableText.setAttribute('placeholder', 'ex. Jane');
                 $('#' + videoSpanId)[0].appendChild(editableText);
 
                 $('#localVideoContainer .displayname')
@@ -846,7 +846,7 @@ var VideoLayout = (function (my) {
 
                 $('#' + videoSpanId)[0].appendChild(audioMutedSpan);
                 var mutedIndicator = document.createElement('i');
-                mutedIndicator.className = 'icon-mic-disabled';
+                mutedIndicator.className = 'jicon-mic-disabled';
                 audioMutedSpan.appendChild(mutedIndicator);
 
             }

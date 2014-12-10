@@ -1,0 +1,515 @@
+@import "compass/reset";
+@import "compass";
+@import "_base";
+
+
+* {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+html {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 300;
+  color: #333333;
+  /* background: black; */
+  background:  $main_purple_rgb;
+  font-family: $font_stack;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font_stack;
+  font-weight: 100;
+  color: white;
+  margin: 0;
+  text-rendering: optimizelegibility;
+}
+
+h1 {
+  font-size: 50px;
+  line-height: 1.2em;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 26px;
+  line-height: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+h3 {
+  font-size: 21px;
+  line-height: 1.2em;
+  margin-bottom: 0.3em;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 1.12em;
+  margin-bottom: 0.3em;
+}
+
+h5 {
+  font-size: 16px;
+  line-height: 1.1em;
+  margin-bottom: 0.3em;
+}
+
+h6 {
+  font-size: 14px;
+  line-height: 1.1em;
+  margin-bottom: 0.3em;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1.5em;
+  line-height: 21px;
+}
+
+ul, ol {
+  list-style-position: outside;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 0.5em;
+  list-style: none;
+}
+
+a {
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  color: white;
+  text-decoration: none;
+  &:hover {
+    color: #d9d9d9;
+}
+}
+
+textarea {
+  height: 100px;
+}
+
+/*** jitsi ***/
+
+#chatspace, #contactlist {
+  display: none;
+  position: absolute;
+  float: right;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 20%;
+  max-width: 200px;
+  overflow: hidden;
+  background-color: $chat_background;
+  /*background-color:#FFFFFF;*/
+  /*background-color: $main_purple;*/
+  border-left: 1px solid #424242;
+  z-index: 5;
+}
+
+#settings, #nowebrtc {
+  display: none;
+}
+
+#settingsButton {
+  visibility: hidden;
+}
+
+.toolbar_span {
+  display: inline-block;
+  position: relative;
+}
+
+.button {
+  display: inline-block;
+  position: relative;
+  color: #FFFFFF;
+  top: 0;
+  padding: 10px 0;
+  width: 38px;
+  cursor: pointer;
+  font-size: 11pt;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3), 0 -1px 0 rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.toolbar_span > span {
+  display: inline-block;
+  position: absolute;
+  font-size: 7pt;
+  color: #ffffff;
+  text-align: center;
+  cursor: pointer;
+}
+
+#chatButton, #chatBottomButton, #contactListButton {
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+
+/*#ffde00*/
+
+#chatButton.active, #contactListButton.glowing, #chatBottomButton.glowing {
+  -webkit-text-shadow: -1px 0 10px #00ccff, 0 1px 10px #00ccff, 1px 0 10px #00ccff, 0 -1px 10px #00ccff;
+  -moz-text-shadow: 1px 0 10px #00ccff, 0 1px 10px #00ccff, 1px 0 10px #00ccff, 0 -1px 10px #00ccff;
+  text-shadow: -1px 0 10px #00ccff, 0 1px 10px #00ccff, 1px 0 10px #00ccff, 0 -1px 10px #00ccff;
+}
+
+#numberOfParticipants {
+  position: absolute;
+  top: 0;
+  right: -1px;
+  color: white;
+  width: 13px;
+  height: 13px;
+  line-height: 13px;
+  font-weight: bold;
+  border-radius: 2px;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#recordButton {
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+  &.active {
+    -webkit-text-shadow: -1px 0 10px #00ccff, 0 1px 10px #00ccff, 1px 0 10px #00ccff, 0 -1px 10px #00ccff;
+    -moz-text-shadow: 1px 0 10px #00ccff, 0 1px 10px #00ccff, 1px 0 10px #00ccff, 0 -1px 10px #00ccff;
+    text-shadow: -1px 0 10px #00ccff, 0 1px 10px #00ccff, 1px 0 10px #00ccff, 0 -1px 10px #00ccff;
+}
+}
+
+/*#ffde00*/
+
+a {
+  &.button:hover, &.bottomToolbarButton:hover {
+    top: 0;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    background-clip: padding-box;
+    -webkit-border-radius: 6px;
+    -webkit-background-clip: padding-box;
+}
+}
+
+.no-fa-video-camera, .fa-microphone-slash {
+  color: #636363;
+}
+
+.header_button_separator {
+  display: inline-block;
+  position: relative;
+  top: 5px;
+  width: 1px;
+  height: 20px;
+  background: #373737;
+}
+
+.bottom_button_separator {
+  display: inline-block;
+  position: relative;
+  left: 5px;
+  width: 20px;
+  height: 1px;
+  background: #373737;
+}
+
+input {
+  &[type='text'], &[type='password'] {
+    display: inline-block;
+    font-size: 14px;
+    padding: 5px;
+    background: $main_blue;
+    border-radius: 3px;
+    font-weight: 100;
+    line-height: 20px;
+    height: 40px;
+    color: #ffffff;
+    text-align: left;
+    /*border:1px solid #ACD8F0;*/
+    outline: none;
+    /* removes the default outline */
+    resize: none;
+  /* prevents the user-resizing, adjust to taste */
+}
+}
+
+textarea {
+  display: inline-block;
+  font-size: 14px;
+  padding: 5px;
+  background: $main_blue;
+  border-radius: 3px;
+  font-weight: 100;
+  line-height: 20px;
+  height: 40px;
+  color: #ffffff;
+  text-align: left;
+  /*border:1px solid #ACD8F0;*/
+  outline: none;
+  /* removes the default outline */
+  resize: none;
+/* prevents the user-resizing, adjust to taste */
+}
+
+input {
+  &[type='text'], &[type='password'] {
+    box-shadow: inset 0 0 1px 1px #3c108e;
+/* provides a more style-able
+replacement to the outline */
+}
+}
+
+textarea {
+  &:focus {
+    box-shadow: inset 0 0 1px 1px #3c108e;
+/* provides a more style-able
+replacement to the outline */
+}
+  overflow: hidden;
+  word-wrap: break-word;
+  resize: horizontal;
+}
+
+button {
+  &.no-icon {
+    padding: 0 1em;
+}
+  border: none;
+  height: 35px;
+  padding: 0 1em 0 2em;
+  position: relative;
+  border-radius: 3px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 35px;
+  background: #2c8ad2;
+  margin: 0;
+  vertical-align: baseline;
+}
+
+input, select, textarea {
+  margin: 0;
+  vertical-align: baseline;
+}
+
+button {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+
+input {
+  &[type="button"], &[type="reset"], &[type="submit"] {
+    cursor: pointer;
+    -webkit-appearance: button;
+}
+}
+
+form {
+  display: block;
+}
+
+#downloadlog {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  overflow: visible;
+  z-index: 100;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+#bottomToolbar {
+  /*display:block;*/
+  position: absolute;
+  right: 0;
+  margin-right: 5px;
+  bottom: 150px;
+  width: 29px;
+  border-radius: 6px;
+  color: #FFF;
+  border: 1px solid rgba(256, 256, 256, 0.2);
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 6;
+/*+1 from #remoteVideos*/
+}
+
+.bottomToolbarButton {
+  display: inline-block;
+  position: relative;
+  color: #FFFFFF;
+  top: 0;
+  padding-top: 6px;
+  margin: 2px;
+  width: 25px;
+  height: 20px;
+  cursor: pointer;
+  font-size: 10pt;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3), 0 -1px 0 rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+.active {
+  color: #00ccff;
+}
+
+.bottomToolbar_span > span {
+  display: inline-block;
+  position: absolute;
+  font-size: 7pt;
+  color: #ffffff;
+  text-align: center;
+  cursor: pointer;
+}
+
+.glow {
+  text-shadow: 0 0 30px #06a5df, 0 0 10px #06a5df, 0 0 5px #06a5df, 0 0 3px #06a5df;
+}
+
+.watermark {
+  display: block;
+  position: absolute;
+  top: 15px;
+  width: 130px;
+  height: 52px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 2;
+}
+
+.leftwatermark {
+  display: none;
+  left: 15px;
+  background-image: url(../images/iparlo-logo.svg);
+  background-position: center left;
+}
+
+.rightwatermark {
+  display: none;
+  right: 15px;
+  background-position: center right;
+}
+
+.poweredby {
+  display: none;
+  position: absolute;
+  left: 25px;
+  bottom: 7px;
+  font-size: 11pt;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  z-index: 100;
+}
+
+/************** TO iparlo *********/
+
+li {
+  margin-bottom: 0.5em;
+  list-style: none;
+}
+
+.fullscreen {
+  color: #fff;
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  z-index: 5;
+}
+
+.nav-option {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: $main_blue;
+  z-index: 10;
+  border-radius: 0 10px 0 0;
+  padding-bottom: 20px;
+  li {
+    position: relative;
+}
+  span {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 1px;
+    display: block;
+    position: absolute;
+    top: 15px;
+    left: 40px;
+    margin-left: 10px;
+    width: 200px;
+    color: #fff;
+    opacity: 0;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+  a {
+    display: block;
+    padding: 10px 15px 10px 10px;
+    color: #fff;
+    position: relative;
+    &:hover {
+      color: $main_purple;
+      + span {
+        opacity: 1;
+        left: 55px;
+    }
+  }
+}
+}
+
+.close-session {
+  position: absolute;
+  right: 20px;
+  bottom: 160px;
+  z-index: 5;
+  span {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    position: relative;
+    top: -2px;
+    opacity: 0;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    right: -10px;
+}
+  a {
+    color: #fff;
+    border-radius: 7px;
+    &:hover {
+      color: #ddd;
+      span {
+        opacity: 1;
+        right: 0;
+    }
+  }
+}
+}

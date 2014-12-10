@@ -1,14 +1,17 @@
-<html itemscope itemtype="http://schema.org/Product" prefix="og: http://ogp.me/ns#" xmlns="http://www.w3.org/1999/html">
+<html>
   <head>
     <!--#include virtual="title.html" -->
-    <link rel="icon" type="image/png" href="/images/favicon.ico"/>
-    <meta property="og:title" content="Jitsi Meet"/>
-    <meta property="og:image" content="/images/jitsilogo.png"/>
-    <meta property="og:description" content="Join a WebRTC video conference powered by the Jitsi Videobridge"/>
-    <meta description="Join a WebRTC video conference powered by the Jitsi Videobridge"/>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <meta property="og:title" content="iparlo meet"/>
+    <meta property="og:image" content="/images/iparlo-logo-color.png"/>
+    <meta property="og:description" content="Join a webrtc powered video conference with iparlo"/>
+    <meta description="Join a webrtc powered video conference with iparlo"/>
     <meta itemprop="name" content="Jitsi Meet"/>
-    <meta itemprop="description" content="Join a WebRTC video conference powered by the Jitsi Videobridge"/>
-    <meta itemprop="image" content="/images/jitsilogo.png"/>
+    <meta itemprop="description" content="Join a webrtc powered video conference with iparlo"/>
+    <meta itemprop="image" content="/images/iparlo-logo-color.png"/>
+
     <script src="libs/jquery-2.1.1.min.js"></script>
     <script src="config.js?v=5"></script><!-- adapt to your needs, i.e. set hosts and bosh path -->
     <script src="simulcast.js?v=5"></script><!-- simulcast handling -->
@@ -61,10 +64,12 @@
     <script src="jitsipopover.js?v=3"></script>
     <script src="message_handler.js?v=1"></script>
     <script src="api_connector.js?v=1"></script>
+
+    <link href='//fonts.googleapis.com/css?family=Raleway:300,500,100' rel='stylesheet' type='text/css'>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="css/font.css?v=5"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css?v=28"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="css/videolayout_default.css?v=13" id="videolayout_default"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/videolayout_iparlo.css" id="videolayout_iparlo"/>
     <link rel="stylesheet" href="css/jquery-impromptu.css?v=4">
     <link rel="stylesheet" href="css/modaldialog.css?v=3">
     <link rel="stylesheet" href="css/popup_menu.css?v=4">
@@ -76,165 +81,21 @@
     <!--
         Link used for inline installation of chrome desktop streaming extension,
         is updated automatically from the code with the value defined in config.js -->
-    <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/diibjkoicjeejcmhdnailmkgecihlobk">
+    <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/fbalddklnheneegehijmjanjbjimckgi">
     <script src="libs/jquery-impromptu.js"></script>
     <script src="libs/jquery.autosize.js"></script>
     <script src="libs/prezi_player.js?v=2"></script>
   </head>
   <body>
     <div id="welcome_page">
-        <div id="welcome_page_header">
-            <a target="_new">
-                <div class="watermark leftwatermark"></div>
-            </a>
-            <a target="_new">
-                <div class="watermark rightwatermark"></div>
-            </a>
-            <a class="poweredby" href="http://jitsi.org" target="_new" >powered by jitsi.org</a>
 
-            <div id="enter_room_container">
-                    <div id="enter_room_form" >
-                        <div id="domain_name"></div>
-                        <div id="enter_room">
-                            <input id="enter_room_field" type="text" autofocus placeholder="Enter room name" />
-                            <div class="icon-reload" id="reload_roomname"></div>
-                            <input id="enter_room_button" type="button" value="GO" />
-
-                        </div>
-                    </div>
-            </div>
-            <div id="brand_header"></div>
-            <input type='checkbox' name='checkbox' id="disable_welcome"/>
-            <label for="disable_welcome" class="disable_welcome_position">Don't show this page next time I enter</label>
-            <div id="header_text"></div>
-        </div>
-        <div id="welcome_page_main">
-            <div id="features">
-                <div class="feature_row">
-                    <div class="feature_holder">
-                        <div class="feature_icon">Simple to use</div>
-                        <div class="feature_description">
-                            No downloads required. <span name="appName"></span> works directly within your browser. Simply share your conference URL with others to get started.
-                        </div>
-                    </div>
-                    <div class="feature_holder">
-                        <div class="feature_icon">Low bandwidth</div>
-                        <div class="feature_description">
-                            Multi-party video conferences work with as little as 128Kbps. Screen-sharing and audio-only conferences are possible with far less.
-                        </div>
-                    </div>
-                    <div class="feature_holder">
-                        <div class="feature_icon">Open source</div>
-                        <div class="feature_description">
-                            <span name="appName"></span> is licensed under MIT. You are free to download, use, modify, and share them as per these licenses.
-                        </div>
-                    </div>
-                    <div class="feature_holder">
-                        <div class="feature_icon">Unlimited users</div>
-                        <div class="feature_description">
-                            There are no artificial restrictions on the number of users or conference participants. Server power and bandwidth are the only limiting factors.
-                        </div>
-                    </div>
-                </div>
-                <div class="feature_row">
-                    <div class="feature_holder">
-                        <div class="feature_icon">Screen sharing</div>
-                        <div class="feature_description">
-                            It's easy to share your screen with others. <span name="appName"></span> is ideal for on-line presentations, lectures, and tech support sessions.
-                        </div>
-                    </div>
-                    <div class="feature_holder">
-                        <div class="feature_icon">Secure rooms</div>
-                        <div class="feature_description">
-                            Need some privacy? <span name="appName"></span> conference rooms can be secured with a password in order to exclude unwanted guests and prevent interruptions.
-                        </div>
-                    </div>
-                    <div class="feature_holder">
-                        <div class="feature_icon">Shared notes</div>
-                        <div class="feature_description">
-                            <span name="appName"></span> features Etherpad, a real-time collaborative text editor that's great for meeting minutes, writing articles, and more.
-                        </div>
-                    </div>
-                    <div class="feature_holder">
-                        <div class="feature_icon">Usage statistics</div>
-                        <div class="feature_description">
-                            Learn about your users through easy integration with Piwik, Google Analytics, and other usage monitoring and statistics systems.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <div id="videoconference_page">
         <div style="position: relative;" id="header_container">
-            <div id="header">
-                <span id="toolbar">
-                    <a class="button" data-container="body" data-toggle="popover" data-placement="bottom" shortcut="mutePopover" content="Mute / Unmute" onclick='toggleAudio();'>
-                        <i id="mute" class="icon-microphone"></i>
-                    </a>
-                    <div class="header_button_separator"></div>
-                    <a class="button" data-container="body" data-toggle="popover" data-placement="bottom" shortcut="toggleVideoPopover" content="Start / stop camera" onclick='toggleVideo();'>
-                        <i id="video" class="icon-camera"></i>
-                    </a>
-                    <span id="recording" style="display: none">
-                        <div class="header_button_separator"></div>
-                        <a class="button" data-container="body" data-toggle="popover" data-placement="bottom" content="Record" onclick='toggleRecording();'>
-                            <i id="recordButton" class="icon-recEnable"></i>
-                        </a>
-                    </span>
-                    <div class="header_button_separator"></div>
-                    <a class="button" data-container="body" data-toggle="popover" data-placement="bottom" content="Lock / unlock room" onclick="Toolbar.openLockDialog();">
-                        <i id="lockIcon" class="icon-security"></i>
-                    </a>
-                    <div class="header_button_separator"></div>
-                    <a class="button" data-container="body" data-toggle="popover" data-placement="bottom" content="Invite others" onclick="Toolbar.openLinkDialog();">
-                        <i class="icon-link"></i>
-                    </a>
-                    <div class="header_button_separator"></div>
-                    <span class="toolbar_span">
-                        <a class="button" data-container="body" data-toggle="popover" shortcut="toggleChatPopover" data-placement="bottom" content="Open / close chat" onclick='BottomToolbar.toggleChat();'>
-                            <i id="chatButton" class="icon-chat">
-                                <span id="unreadMessages"></span>
-                            </i>
-                        </a>
-                    </span>
-                    <span id="prezi_button">
-                        <div class="header_button_separator"></div>
-                        <a class="button" data-container="body" data-toggle="popover" data-placement="bottom" content="Share Prezi" onclick='Prezi.openPreziDialog();'>
-                            <i class="icon-prezi"></i>
-                        </a>
-                    </span>
-                    <span id="etherpadButton">
-                        <div class="header_button_separator"></div>
-                        <a class="button" data-container="body" data-toggle="popover" data-placement="bottom" content="Shared document" onclick='Etherpad.toggleEtherpad(0);'>
-                            <i class="icon-share-doc"></i>
-                        </a>
-                    </span>
-                    <div class="header_button_separator"></div>
-                    <span id="desktopsharing" style="display: none">
-                        <a class="button" data-container="body" data-toggle="popover" data-placement="bottom" content="Share screen" onclick="toggleScreenSharing();">
-                            <i class="icon-share-desktop"></i>
-                        </a>
-                    </span>
-                    <div class="header_button_separator"></div>
-                    <a class="button" data-container="body" data-toggle="popover" data-placement="bottom" content="Enter / Exit Full Screen" onclick='buttonClick("#fullScreen", "icon-full-screen icon-exit-full-screen");Toolbar.toggleFullScreen();'>
-                        <i id="fullScreen" class="icon-full-screen"></i>
-                    </a>
-                    <span id="sipCallButton" style="display: none">
-                        <div class="header_button_separator"></div>
-                        <a class="button" data-container="body" data-toggle="popover" data-placement="bottom" content="Call SIP number" onclick='callSipButtonClicked();'>
-                            <i class="icon-telephone"></i></a>
-                    </span>
-                    <div class="header_button_separator"></div>
-                    <span id="hangup">
-                        <a class="button" data-container="body" data-toggle="popover" data-placement="bottom" content="Hang Up" onclick='hangup();'>
-                            <i class="icon-hangup" style="color:#ff0000;font-size: 1.4em;"></i>
-                        </a>
-                    </span>
-                </span>
-            </div>
+
             <div id="subject"></div>
         </div>
+
         <div id="settings">
           <h1>Connection Settings</h1>
           <form id="loginInfo">
@@ -245,54 +106,80 @@
           </form>
         </div>
         <div id="reloadPresentation"><a onclick='Prezi.reloadPresentation();'><i title="Reload Prezi" class="fa fa-repeat fa-lg"></i></a></div>
-        <div id="videospace" onmousemove="ToolbarToggler.showToolbar();">
-            <div id="largeVideoContainer" class="videocontainer">
-                <div id="presentation"></div>
-                <div id="etherpad"></div>
-                <a target="_new"><div class="watermark leftwatermark"></div></a>
-                <a target="_new"><div class="watermark rightwatermark"></div></a>
-                <a class="poweredby" href="http://jitsi.org" target="_new" >powered by jitsi.org</a>
-                <video id="largeVideo" autoplay oncontextmenu="return false;"></video>
-            </div>
-            <div id="remoteVideos">
-                <span id="localVideoContainer" class="videocontainer">
-                    <span id="localNick" class="nick"></span>
-                    <span id="localVideoWrapper">
-                        <!--<video id="localVideo" autoplay oncontextmenu="return false;" muted></video> - is now per stream generated -->
-                    </span>
-                    <audio id="localAudio" autoplay oncontextmenu="return false;" muted></audio>
-                    <span class="focusindicator"></span>
-                    <!--<div class="connectionindicator">
-                        <span class="connection connection_empty"><i class="icon-connection"></i></span>
-                        <span class="connection connection_full"><i class="icon-connection"></i></span>
-                    </div>-->
 
-                </span>
-                <audio id="userJoined" src="sounds/joined.wav" preload="auto"></audio>
-                <audio id="userLeft" src="sounds/left.wav" preload="auto"></audio>
-            </div>
-            <span id="bottomToolbar">
-                <span class="bottomToolbar_span">
-                    <a class="bottomToolbarButton" data-container="body" data-toggle="popover" shortcut="toggleChatPopover" data-placement="top" content="Open / close chat" onclick='BottomToolbar.toggleChat();'>
-                        <i id="chatBottomButton" class="icon-chat-simple">
-                            <span id="bottomUnreadMessages"></span>
-                        </i>
-                    </a>
-                </span>
-                <div class="bottom_button_separator"></div>
-                <span class="bottomToolbar_span">
-                    <a class="bottomToolbarButton" data-container="body" data-toggle="popover" data-placement="top" id="contactlistpopover" content="Open / close contact list" onclick='BottomToolbar.toggleContactList();'>
-                        <i id="contactListButton" class="icon-contactList"></i>
-                        <span id="numberOfParticipants"></span>
-                    </a>
-                </span>
-                <div class="bottom_button_separator"></div>
-                <span class="bottomToolbar_span">
-                    <a class="bottomToolbarButton" data-container="body" data-toggle="popover" shortcut="filmstripPopover" data-placement="top" content="Show / hide film strip" onclick='BottomToolbar.toggleFilmStrip()'>
-                        <i id="filmStripButton" class="icon-filmstrip"></i>
-                    </a>
-                </span>
-            </span>
+
+        <div id="videospace">
+
+          <!-- begin FULLSCREEN -->
+          <div class="fullscreen"><a title="Enter/Exit Fullscreen" onclick='buttonClick("#fullScreen", "icon-full-screen jicon-exit-full-screen");Toolbar.toggleFullScreen();'><i id="fullScreen" class="icon-full-screen"></i></a></div>
+          <!-- end FULLSCREEN -->
+
+          <!-- begin NAVIGATION OPTION -->
+          <div class="nav-option">
+            <ul>
+              <li  onclick="Toolbar.openLockDialog();">
+                <a  title="Lock/Unlock Room"><i id="lockIcon" class="icon-lock"></i></a>
+                <span>Lock Room</span>
+              </li>
+              <li onclick="Toolbar.openLinkDialog();">
+                <a  title="Invite others"><i class="icon-add-contact"></i></a>
+                <span>Invite others</span>
+              </li>
+              <li onclick='BottomToolbar.toggleChat();'>
+                <a  title="Open/Close chat"><i id="chatBottomButton" class="icon-comment"><span id="bottomUnreadMessages"></span></i></a>
+                <span>Open chat</span>
+              </li>
+              <li onclick="toggleScreenSharing();">
+                <a title="Share screen"><i class="icon-desktop"></i></a>
+                <span>Share screen</span>
+              </li>
+              <li onclick='callSipButtonClicked();'>
+                <a title="Call number"><i class="icon-phone"></i></a>
+                <span>Call number</span>
+              </li>
+            </ul>
+          </div>
+          <!-- end NAVIGATION OPTION -->
+
+          <div id="largeVideoContainer" class="videocontainer">
+              <div id="presentation"></div>
+              <div id="etherpad"></div>
+              <a target="_new"><div class="watermark leftwatermark"></div></a>
+              <a class="poweredby" href="http://www.iparlo.com" target="_new" >powered by iparlo</a>
+              <video id="largeVideo" autoplay oncontextmenu="return false;"></video>
+          </div>
+
+
+
+          <div id="remoteVideos">
+              <span id="localVideoContainer" class="videocontainer">
+                  <span id="localNick" class="nick"></span>
+                  <span id="localVideoWrapper">
+                      <!--<video id="localVideo" autoplay oncontextmenu="return false;" muted></video> - is now per stream generated -->
+                  </span>
+
+                  <span id="localMute">
+                    <span class="localOptions_span">
+                      <a class="optionMuteButton" title="Mute Mic On/off" onclick='toggleAudio()'> <i id="mute" class="icon-micro"  ></i></a>
+                    </span>
+                    <span class="localOptions_span">
+                      <a class="optionMuteButton" title="Start/Stop Camera" onclick='toggleVideo();'> <i id="videoMute" class="icon-videocam"  ></i></a>
+                    </span>
+                  </span>
+
+                  <audio id="localAudio" autoplay oncontextmenu="return false;" muted></audio>
+                  <span class="focusindicator"></span>
+                  <!--<div class="connectionindicator">
+                      <span class="connection connection_empty"><i class="icon-connection"></i></span>
+                      <span class="connection connection_full"><i class="icon-connection"></i></span>
+                  </div>-->
+              </span>
+              <audio id="userJoined" src="sounds/joined.wav" preload="auto"></audio>
+              <audio id="userLeft" src="sounds/left.wav" preload="auto"></audio>
+          </div>
+
+          <div class="close-session"><a title="Exit Session" onclick='hangup();'><span>Quit</span><i class="icon-exit"></i></a></div>
+
         </div>
         <div id="chatspace">
             <div id="nickname">
@@ -317,7 +204,7 @@
                 <li class="title"><i class="icon-contact-list"></i> CONTACT LIST</li>
             </ul>
         </div>
-        <a id="downloadlog" onclick='dump(event.target);' data-container="body" data-toggle="popover" data-placement="right" data-content="Download logs" ><i class="fa fa-cloud-download"></i></a>
+
     </div>
   </body>
 </html>

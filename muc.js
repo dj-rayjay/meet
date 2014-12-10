@@ -409,19 +409,19 @@ Strophe.addConnectionPlugin('emuc', {
         return this.preziMap[roomjid];
     },
     addEtherpadToPresence: function(etherpadName) {
-        this.presMap['etherpadns'] = 'http://jitsi.org/jitmeet/etherpad';
+        this.presMap['etherpadns'] = 'http://meet03.iparlo.net/etherpad';
         this.presMap['etherpadname'] = etherpadName;
     },
     addAudioInfoToPresence: function(isMuted) {
-        this.presMap['audions'] = 'http://jitsi.org/jitmeet/audio';
+        this.presMap['audions'] = 'http://meet03.iparlo.net/audio';
         this.presMap['audiomuted'] = isMuted.toString();
     },
     addVideoInfoToPresence: function(isMuted) {
-        this.presMap['videons'] = 'http://jitsi.org/jitmeet/video';
+        this.presMap['videons'] = 'http://meet03.iparlo.net/video';
         this.presMap['videomuted'] = isMuted.toString();
     },
     addConnectionInfoToPresence: function(stats) {
-        this.presMap['statsns'] = 'http://jitsi.org/jitmeet/stats';
+        this.presMap['statsns'] = 'http://meet03.iparlo.net/stats';  // TO iparlo
         this.presMap['stats'] = stats;
     },
     findJidFromResource: function(resourceJid) {
