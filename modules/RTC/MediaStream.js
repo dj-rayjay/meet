@@ -1,3 +1,4 @@
+var RTC = require("./RTC.js");
 ////These lines should be uncommented when require works in app.js
 //var RTCBrowserType = require("../../service/RTC/RTCBrowserType.js");
 //var StreamEventTypes = require("../../service/RTC/StreamEventTypes.js");
@@ -14,18 +15,7 @@
  *
  * @constructor
  */
-function MediaStream(data, sid, ssrc, eventEmmiter, browser) {
-
-    // XXX(gp) to minimize headaches in the future, we should build our
-    // abstractions around tracks and not streams. ORTC is track based API.
-    // Mozilla expects m-lines to represent media tracks.
-    //
-    // Practically, what I'm saying is that we should have a MediaTrack class
-    // and not a MediaStream class.
-    //
-    // Also, we should be able to associate multiple SSRCs with a MediaTrack as
-    // a track might have an associated RTX and FEC sources.
-
+function MediaStream(data, sid, ssrc, eventEmmiter) {
     this.sid = sid;
     this.stream = data.stream;
     this.peerjid = data.peerjid;
@@ -34,15 +24,15 @@ function MediaStream(data, sid, ssrc, eventEmmiter, browser) {
         MediaStreamType.VIDEO_TYPE : MediaStreamType.AUDIO_TYPE;
     this.muted = false;
     eventEmmiter.emit(StreamEventTypes.EVENT_TYPE_REMOTE_CREATED, this);
-    if(browser == RTCBrowserType.RTC_BROWSER_FIREFOX)
-    {
-        if (!this.getVideoTracks)
-            this.getVideoTracks = function () { return []; };
-        if (!this.getAudioTracks)
-            this.getAudioTracks = function () { return []; };
-    }
 }
 
+if(RTC.getBrowserType() == RTCBrowserType.RTC_BROWSER_FIREFOX)
+{
+    if (!MediaStream.prototype.getVideoTracks)
+        MediaStream.prototype.getVideoTracks = function () { return []; };
+    if (!MediaStream.prototype.getAudioTracks)
+        MediaStream.prototype.getAudioTracks = function () { return []; };
+}
 
 MediaStream.prototype.getOriginalStream = function()
 {

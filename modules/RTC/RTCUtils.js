@@ -245,7 +245,7 @@ RTCUtils.prototype.getUserMediaWithConstraints = function(
                 });
         } else {
 
-            this.getUserMedia(constraints,
+            RTCUtils.getUserMedia(constraints,
                 function (stream) {
                     console.log('onUserMediaSuccess');
                     success_callback(stream);
