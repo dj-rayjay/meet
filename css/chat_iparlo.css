@@ -1,0 +1,276 @@
+/* Converted to SCSS from original version: Thomas 24.12.2014 */
+/* line 4, sass/chat_iparlo.scss */
+#chatspace {
+  background-color: black;
+  border-left: 1px solid #424242;
+}
+
+/* line 9, sass/chat_iparlo.scss */
+#chatspace * {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* line 14, sass/chat_iparlo.scss */
+#chatconversation {
+  visibility: hidden;
+  position: relative;
+  top: 5px;
+  padding: 5px;
+  text-align: left;
+  line-height: 20px;
+  font-size: 10pt;
+  width: 100%;
+  height: 90%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  word-wrap: break-word;
+}
+
+/* line 29, sass/chat_iparlo.scss */
+.localuser {
+  color: #087dba;
+}
+
+/* line 33, sass/chat_iparlo.scss */
+.errorMessage {
+  color: red;
+}
+
+/* line 37, sass/chat_iparlo.scss */
+.remoteuser {
+  color: white;
+}
+
+/* line 41, sass/chat_iparlo.scss */
+#usermsg {
+  visibility: hidden;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 83%;
+  height: 30px;
+  padding: 5px 5px 5px 0px;
+  max-height: 150px;
+  min-height: 35px;
+  border: 0px none;
+  background: #3a3a3a;
+  color: #a7a7a7;
+  box-shadow: none;
+  border-radius: 0;
+  font-size: 10pt;
+  line-height: 30px;
+  overflow: hidden;
+  resize: none;
+}
+
+/* line 62, sass/chat_iparlo.scss */
+#usermsg:hover {
+  border: 0px none;
+  box-shadow: none;
+}
+
+/* line 67, sass/chat_iparlo.scss */
+#nickname {
+  position: absolute;
+  text-align: center;
+  color: #9d9d9d;
+  font-size: 18px;
+  top: 100px;
+  left: 5px;
+  right: 5px;
+  width: 95%;
+}
+
+/* line 78, sass/chat_iparlo.scss */
+#nickinput {
+  margin-top: 20px;
+  font-size: 14px;
+  background: #3a3a3a;
+  box-shadow: inset 0 0 3px 2px #a7a7a7;
+  border: 1px solid #a7a7a7;
+  color: #a7a7a7;
+}
+
+/* line 87, sass/chat_iparlo.scss */
+#unreadMessages {
+  font-size: 8px;
+  position: absolute;
+  left: 46%;
+  top: 27%;
+}
+
+/* line 94, sass/chat_iparlo.scss */
+#bottomUnreadMessages {
+  top: 5px;
+  left: 10px;
+  position: absolute;
+  font-size: 8px;
+}
+
+/* line 101, sass/chat_iparlo.scss */
+#chatspace .username {
+  float: left;
+  padding-left: 5px;
+  font-weight: bold;
+}
+
+/* line 107, sass/chat_iparlo.scss */
+#chatspace .timestamp {
+  float: right;
+  padding-right: 5px;
+  font-size: 11px;
+}
+
+/* line 113, sass/chat_iparlo.scss */
+#chatspace .usermessage {
+  padding-top: 20px;
+  padding-left: 5px;
+}
+
+/* line 118, sass/chat_iparlo.scss */
+.chatArrow {
+  position: absolute;
+  height: 15px;
+  left: 5px;
+}
+
+/* line 124, sass/chat_iparlo.scss */
+.chatmessage {
+  background: #3a3a3a;
+  width: 93%;
+  margin-left: 5%;
+  margin-right: auto;
+  border-radius: 5px;
+  border-top-left-radius: 0px;
+  margin-top: 3px;
+  left: 5px;
+  color: #a7a7a7;
+  overflow: hidden;
+  padding-bottom: 3px;
+}
+
+/* line 138, sass/chat_iparlo.scss */
+.smiley {
+  height: 26px;
+}
+
+/* line 142, sass/chat_iparlo.scss */
+#smileys {
+  position: absolute;
+  bottom: 7px;
+  right: 5px;
+  background: white;
+  border-radius: 50px;
+  height: 26px;
+  margin: auto;
+  cursor: pointer;
+}
+
+/* line 153, sass/chat_iparlo.scss */
+#smileys img {
+  width: 22px;
+  padding: 2px;
+}
+
+/* line 158, sass/chat_iparlo.scss */
+#smileysarea {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 17%;
+  min-width: 31px;
+  height: 40px;
+  padding: 0px;
+  max-height: 150px;
+  min-height: 35px;
+  border: 0px none;
+  background: #3a3a3a;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+/* line 174, sass/chat_iparlo.scss */
+#smileysContainer {
+  display: none;
+  position: absolute;
+  background: #3a3a3a;
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+  width: 100%;
+  bottom: 10%;
+}
+
+/* line 184, sass/chat_iparlo.scss */
+#smileysContainer .smiley {
+  padding: 7px;
+}
+
+/* line 188, sass/chat_iparlo.scss */
+.smileyContainer {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+}
+
+/* line 194, sass/chat_iparlo.scss */
+.smileyContainer:hover {
+  background: #3e3e3e;
+}
+
+/* line 198, sass/chat_iparlo.scss */
+#usermsg::-webkit-input-placeholder {
+  line-height: 30px;
+}
+
+/* line 202, sass/chat_iparlo.scss */
+::-webkit-scrollbar {
+  background: #06a5df;
+  width: 7px;
+}
+
+/* line 207, sass/chat_iparlo.scss */
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* line 211, sass/chat_iparlo.scss */
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+/* line 215, sass/chat_iparlo.scss */
+::-webkit-scrollbar-track-piece {
+  background: black;
+}
+
+/* line 219, sass/chat_iparlo.scss */
+::-webkit-scrollbar-thumb {
+  background: #06a5df;
+  border-radius: 4px;
+}
+
+/* line 224, sass/chat_iparlo.scss */
+#usermsg::-webkit-scrollbar-track-piece {
+  background: #3a3a3a;
+}
+
+/* line 228, sass/chat_iparlo.scss */
+a:link {
+  color: #b8b8b8;
+}
+
+/* line 232, sass/chat_iparlo.scss */
+a:visited {
+  color: white;
+}
+
+/* line 236, sass/chat_iparlo.scss */
+a:hover {
+  color: #d5d5d5;
+}
+
+/* line 240, sass/chat_iparlo.scss */
+a:active {
+  color: black;
+}

@@ -1,0 +1,460 @@
+/* Converted to SCSS from original version: Thomas 24.12.2014 */
+/* line 5, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 7, sass/main_iparlo.scss */
+* {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* line 12, sass/main_iparlo.scss */
+html, body {
+  margin: 0px;
+  height: 100%;
+  color: #424242;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-weight: 400;
+  background: #000000;
+  overflow-x: hidden;
+}
+
+/* line 22, sass/main_iparlo.scss */
+.right-panel {
+  display: none;
+  position: absolute;
+  float: right;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  width: 20%;
+  max-width: 200px;
+  overflow: hidden;
+  /* background-color:#dfebf1;*/
+  background-color: #FFFFFF;
+  border-left: 1px solid #424242;
+  z-index: 5;
+}
+
+/* line 38, sass/main_iparlo.scss */
+#settings {
+  display: none;
+}
+
+/* line 42, sass/main_iparlo.scss */
+#nowebrtc {
+  display: none;
+}
+
+/* line 46, sass/main_iparlo.scss */
+.toolbar_span {
+  display: inline-block;
+  position: relative;
+}
+
+/* line 51, sass/main_iparlo.scss */
+.button {
+  display: inline-block;
+  position: relative;
+  color: #FFFFFF;
+  top: 0px;
+  padding: 10px 0px;
+  width: 38px;
+  cursor: pointer;
+  font-size: 11pt;
+  text-align: center;
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3), 0px -1px 0px rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+/* line 65, sass/main_iparlo.scss */
+.toolbar_span > span {
+  display: inline-block;
+  position: absolute;
+  font-size: 7pt;
+  color: #ffffff;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* line 74, sass/main_iparlo.scss */
+#chatButton, #chatBottomButton, #contactListButton, #numberOfParticipants {
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+
+/*#ffde00*/
+/* line 80, sass/main_iparlo.scss */
+#chatButton.active, #contactListButton.glowing, #chatBottomButton.glowing {
+  -webkit-text-shadow: -1px 0 10px #00ccff, 0 1px 10px #00ccff, 1px 0 10px #00ccff, 0 -1px 10px #00ccff;
+  -moz-text-shadow: 1px 0 10px #00ccff, 0 1px 10px #00ccff, 1px 0 10px #00ccff, 0 -1px 10px #00ccff;
+  text-shadow: -1px 0 10px #00ccff, 0 1px 10px #00ccff, 1px 0 10px #00ccff, 0 -1px 10px #00ccff;
+}
+
+/* line 95, sass/main_iparlo.scss */
+#numberOfParticipants {
+  position: absolute;
+  top: 0px;
+  right: -1;
+  color: white;
+  width: 13px;
+  height: 13px;
+  line-height: 13px;
+  font-weight: bold;
+  border-radius: 2px;
+  font-size: 11px;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+/* line 109, sass/main_iparlo.scss */
+#contactListButton.active #numberOfParticipants {
+  color: #00ccff;
+}
+
+/* line 113, sass/main_iparlo.scss */
+#recordButton {
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+
+/*#ffde00*/
+/* line 119, sass/main_iparlo.scss */
+#recordButton.active {
+  -webkit-text-shadow: -1px 0 10px #00ccff, 0 1px 10px #00ccff, 1px 0 10px #00ccff, 0 -1px 10px #00ccff;
+  -moz-text-shadow: 1px 0 10px #00ccff, 0 1px 10px #00ccff, 1px 0 10px #00ccff, 0 -1px 10px #00ccff;
+  text-shadow: -1px 0 10px #00ccff, 0 1px 10px #00ccff, 1px 0 10px #00ccff, 0 -1px 10px #00ccff;
+}
+
+/* line 134, sass/main_iparlo.scss */
+a.button:hover,
+a.bottomToolbarButton:hover {
+  top: 0px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  background-clip: padding-box;
+  -webkit-border-radius: 6px;
+  -webkit-background-clip: padding-box;
+}
+
+/* line 145, sass/main_iparlo.scss */
+.no-fa-video-camera, .fa-microphone-slash {
+  color: #636363;
+}
+
+/* line 149, sass/main_iparlo.scss */
+.header_button_separator {
+  display: inline-block;
+  position: relative;
+  top: 5;
+  width: 1px;
+  height: 20px;
+  background: #373737;
+}
+
+/* line 158, sass/main_iparlo.scss */
+.bottom_button_separator {
+  display: inline-block;
+  position: relative;
+  left: 5;
+  width: 20px;
+  height: 1px;
+  background: #373737;
+}
+
+/* line 167, sass/main_iparlo.scss */
+input[type='text'], input[type='password'], textarea {
+  display: inline-block;
+  font-size: 14px;
+  padding: 5px;
+  background: #f3f3f3;
+  border-radius: 3px;
+  font-weight: 100;
+  line-height: 20px;
+  height: 40px;
+  color: #333;
+  text-align: left;
+  border: 1px solid #ACD8F0;
+  outline: none;
+  /* removes the default outline */
+  resize: none;
+  /* prevents the user-resizing, adjust to taste */
+}
+
+/* line 183, sass/main_iparlo.scss */
+input[type='text'], input[type='password'], textarea:focus {
+  box-shadow: inset 0 0 3px 2px #ACD8F0;
+  /* provides a more style-able
+replacement to the outline */
+}
+
+/* line 188, sass/main_iparlo.scss */
+textarea {
+  overflow: hidden;
+  word-wrap: break-word;
+  resize: horizontal;
+}
+
+/* line 194, sass/main_iparlo.scss */
+button.no-icon {
+  padding: 0 1em;
+}
+
+/* line 198, sass/main_iparlo.scss */
+button {
+  border: none;
+  height: 35px;
+  padding: 0 1em 0 2em;
+  position: relative;
+  border-radius: 3px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 35px;
+  background: #2c8ad2;
+}
+
+/* line 210, sass/main_iparlo.scss */
+button, input, select, textarea {
+  margin: 0;
+  vertical-align: baseline;
+}
+
+/* line 215, sass/main_iparlo.scss */
+button, input[type="button"], input[type="reset"], input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+
+/* line 220, sass/main_iparlo.scss */
+form {
+  display: block;
+}
+
+/* line 224, sass/main_iparlo.scss */
+#downloadlog {
+  position: absolute;
+  bottom: 5;
+  left: 5;
+  overflow: visible;
+  z-index: 100;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* line 233, sass/main_iparlo.scss */
+#bottomToolbar {
+  display: block;
+  position: absolute;
+  right: 0;
+  margin-right: 5px;
+  bottom: 40px;
+  width: 29px;
+  border-radius: 6px;
+  color: #FFF;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 6;
+  /*+1 from #remoteVideos*/
+}
+
+/* line 247, sass/main_iparlo.scss */
+.bottomToolbarButton {
+  display: inline-block;
+  position: relative;
+  color: #FFFFFF;
+  top: 0;
+  padding-top: 6px;
+  margin: 2px;
+  width: 25px;
+  height: 20px;
+  cursor: pointer;
+  font-size: 10pt;
+  text-align: center;
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3), 0px -1px 0px rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+/* line 263, sass/main_iparlo.scss */
+.active {
+  color: #00ccff;
+}
+
+/* line 267, sass/main_iparlo.scss */
+.bottomToolbar_span > span {
+  display: inline-block;
+  position: absolute;
+  font-size: 7pt;
+  color: #ffffff;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* line 276, sass/main_iparlo.scss */
+.glow {
+  text-shadow: 0px 0px 30px #06a5df, 0px 0px 10px #06a5df, 0px 0px 5px #06a5df,0px 0px 3px #06a5df;
+}
+
+/* line 281, sass/main_iparlo.scss */
+.watermark {
+  display: block;
+  position: absolute;
+  top: 15;
+  width: 186px;
+  height: 74px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 2;
+}
+
+/* line 292, sass/main_iparlo.scss */
+.leftwatermark {
+  display: none;
+  left: 15;
+  background-image: url(../images/watermark.png);
+  background-position: center left;
+}
+
+/* line 299, sass/main_iparlo.scss */
+.rightwatermark {
+  display: none;
+  right: 15;
+  background-position: center right;
+}
+
+/* line 305, sass/main_iparlo.scss */
+.poweredby {
+  display: none;
+  position: absolute;
+  left: 25;
+  bottom: 7;
+  font-size: 11pt;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  z-index: 100;
+}
+
+/* line 316, sass/main_iparlo.scss */
+#toast-container.notification-bottom-right {
+  bottom: 120px;
+  right: 5px;
+}
+
+/* line 321, sass/main_iparlo.scss */
+#toast-container.notification-bottom-right-center {
+  right: 205px;
+}
+
+/* line 325, sass/main_iparlo.scss */
+#toast-container .toast-info {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+/* line 330, sass/main_iparlo.scss */
+.toast-close-button {
+  right: -7px;
+  top: -19px;
+}
+
+/* line 335, sass/main_iparlo.scss */
+#toast-container .toast-info {
+  background-color: black;
+  border: 1px solid #3a3a3a;
+  width: 220px;
+  padding: 10px 10px 10px 50px;
+}
+
+/* line 342, sass/main_iparlo.scss */
+.connected {
+  color: forestgreen;
+  font-size: 12px;
+}
+
+/* line 347, sass/main_iparlo.scss */
+.disconnected {
+  color: darkred;
+  font-size: 12px;
+}
+
+/* line 352, sass/main_iparlo.scss */
+.lastN {
+  color: #a3a3a3;
+  font-size: 12px;
+}
+
+/* line 357, sass/main_iparlo.scss */
+.toast-close-button:hover,
+.toast-close-button:focus {
+  color: #ffffff;
+  opacity: 1;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  filter: alpha(opacity=100);
+}
+
+/* line 365, sass/main_iparlo.scss */
+.toast-message .nickname {
+  font-weight: bold;
+}
