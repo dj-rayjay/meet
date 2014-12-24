@@ -108,6 +108,9 @@ var Toolbar = (function (my) {
      * Invite participants to conference.
      */
     function inviteParticipants() {
+        // TO modified iparlo
+        var newWindow;
+
         if (roomUrl === null)
             return;
 
@@ -120,29 +123,30 @@ var Toolbar = (function (my) {
         }
 
         var conferenceName = roomUrl.substring(roomUrl.lastIndexOf('/') + 1);
-        var subject = "Invitation to a " + interfaceConfig.APP_NAME + " (" + conferenceName + ")";
-        var body = "Hey there, I%27d like to invite you to a " + interfaceConfig.APP_NAME +
+        var subject = "Invitation to iparlo webconference (room: " + conferenceName + ")";
+        var body = "Hello,, I would like to invite you to a iparlo meet" +
                     " conference I%27ve just set up.%0D%0A%0D%0A" +
                     "Please click on the following link in order" +
                     " to join the conference.%0D%0A%0D%0A" +
                     roomUrl +
                     "%0D%0A%0D%0A" +
                     sharedKeyText +
-                    "Note that " + interfaceConfig.APP_NAME + " is currently" +
-                    " only supported by Chromium," +
-                    " Google Chrome and Opera, so you need" +
-                    " to be using one of these browsers.%0D%0A%0D%0A" +
-                    "Talk to you in a sec!";
+                    "Note that iparlo meet is currently only supported by" +
+                    " Google Chrome (or Chromium or Opera), so you need" +
+                    " one of these browsers. Nothing else has to be installed to start.%0D%0A%0D%0A" +
+                    "See you in a sec!";
 
         if (window.localStorage.displayname) {
             body += "%0D%0A%0D%0A" + window.localStorage.displayname;
         }
 
-        if (interfaceConfig.INVITATION_POWERED_BY) {
-            body += "%0D%0A%0D%0A--%0D%0Apowered by jitsi.org";
-        }
-
         window.open("mailto:?subject=" + subject + "&body=" + body, '_blank');
+
+
+        newWindow = window.open("mailto:?subject=" + subject + "&body=" + body, '_blank');
+        if (newWindow) {
+            window.setTimeout(function() {newWindow.close();}, 800);
+        }
     }
 
     /**

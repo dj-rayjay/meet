@@ -1028,7 +1028,7 @@ var VideoLayout = (function (my) {
 
                 $('#' + videoSpanId)[0].appendChild(audioMutedSpan);
                 var mutedIndicator = document.createElement('i');
-                mutedIndicator.className = 'icon-mic-disabled';
+                mutedIndicator.className = 'jicon-mic-disabled';
                 audioMutedSpan.appendChild(mutedIndicator);
 
             }
