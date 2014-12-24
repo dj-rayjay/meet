@@ -18,39 +18,38 @@
   padding: 18px;
   bottom: 0;
   left: 0;
-  right: 20px;
+  right: 0px;
   width: auto;
+  background: rgba(145, 114, 213, 0.5);
   border: 1px solid transparent;
   z-index: 5;
   transition: bottom 2s;
   overflow: visible !important;
 }
 
-/* line 29, sass/videolayout_iparlo.scss */
+/* line 30, sass/videolayout_iparlo.scss */
 #remotevideos.hidden {
   bottom: -196px;
 }
 
-/* line 33, sass/videolayout_iparlo.scss */
+/* line 34, sass/videolayout_iparlo.scss */
 .videocontainer {
   position: relative;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 39, sass/videolayout_iparlo.scss */
+/* line 40, sass/videolayout_iparlo.scss */
 #remoteVideos .videocontainer {
   display: inline-block;
-  background-color: black;
+  background-image: url(../images/avatar1.png);
   background-size: contain;
   border-radius: 8px;
   border: 2px solid #212425;
   margin-right: 3px;
 }
-
-/* line 48, sass/videolayout_iparlo.scss */
-#remoteVideos .videocontainer:hover,
-#remoteVideos .videocontainer.videoContainerFocused {
+/* line 47, sass/videolayout_iparlo.scss */
+#remoteVideos .videocontainer:hover, #remoteVideos .videocontainer.videoContainerFocused {
   width: 100%;
   height: 100%;
   content: "";
@@ -65,26 +64,23 @@
   -webkit-animation-iteration-count: 1;
   overflow: visible !important;
 }
-
-/* line 65, sass/videolayout_iparlo.scss */
+/* line 62, sass/videolayout_iparlo.scss */
 #remoteVideos .videocontainer:hover {
   -webkit-box-shadow: inset 0 0 10px #FFFFFF, 0 0 10px #FFFFFF;
   border: 2px solid #FFFFFF;
 }
-
-/* line 70, sass/videolayout_iparlo.scss */
+/* line 66, sass/videolayout_iparlo.scss */
 #remoteVideos .videocontainer.videoContainerFocused {
   -webkit-box-shadow: inset 0 0 28px #006d91;
   border: 2px solid #006d91;
 }
-
-/* line 75, sass/videolayout_iparlo.scss */
+/* line 69, sass/videolayout_iparlo.scss */
 #remoteVideos .videocontainer.videoContainerFocused:hover {
-  -webkit-box-shadow: inset 0 0 5px #FFFFFF, 0 0 10px #FFFFFF, inset 0 0 60px #006d91;
+  -webkit-box-shadow: inset 0 0 5px white, 0 0 10px white, inset 0 0 60px #006d91;
   border: 2px solid #FFFFFF;
 }
 
-/* line 80, sass/videolayout_iparlo.scss */
+/* line 76, sass/videolayout_iparlo.scss */
 #localVideoWrapper {
   display: inline-block;
   -webkit-mask-box-image: url(../images/videomask.svg);
@@ -92,12 +88,62 @@
   border: 0px !important;
 }
 
-/* line 87, sass/videolayout_iparlo.scss */
+/* line 83, sass/videolayout_iparlo.scss */
 #remoteVideos .videocontainer > video {
   border-radius: 4px;
 }
 
-/* line 91, sass/videolayout_iparlo.scss */
+/* line 87, sass/videolayout_iparlo.scss */
+#localMute {
+  position: absolute;
+  display: block;
+  bottom: 0;
+  left: -38px;
+  line-height: 25px;
+  height: auto;
+  width: 32px;
+  border-radius: 6px;
+  color: #FFF;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(60, 63, 113, 0.7);
+  color: #fff;
+  font-size: 0.85em;
+  text-align: center;
+  padding-top: 2px;
+  content: "";
+  cursor: pointer;
+  cursor: hand;
+  opacity: 1;
+  z-index: 3;
+}
+/* line 109, sass/videolayout_iparlo.scss */
+#localMute .localOptions_span > span {
+  display: inline-block;
+  position: absolute;
+  font-size: 7pt;
+  color: #ffffff;
+  text-align: center;
+  cursor: pointer;
+}
+/* line 117, sass/videolayout_iparlo.scss */
+#localMute .localOptions_span .optionMuteButton {
+  display: inline-block;
+  position: relative;
+  color: #FFFFFF;
+  top: 0;
+  padding-top: 6px;
+  padding-right: 2px;
+  margin: 2px;
+  width: 25px;
+  height: 20px;
+  cursor: pointer;
+  font-size: 9pt;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3), 0 -1px 0 rgba(0, 0, 0, 0.7);
+  z-index: 5;
+}
+
+/* line 136, sass/videolayout_iparlo.scss */
 .flipVideoX {
   transform: scale(-1, 1);
   -moz-transform: scale(-1, 1);
@@ -105,28 +151,47 @@
   -o-transform: scale(-1, 1);
 }
 
-/* line 98, sass/videolayout_iparlo.scss */
+/* line 143, sass/videolayout_iparlo.scss */
 #localVideoWrapper > video {
   border-radius: 0px !important;
 }
 
-/* line 102, sass/videolayout_iparlo.scss */
-#largeVideo,
-#largeVideoContainer {
+/* line 147, sass/videolayout_iparlo.scss */
+#largeVideo, #largeVideoContainer {
   overflow: hidden;
   text-align: center;
 }
 
-/* line 108, sass/videolayout_iparlo.scss */
-#largeVideo {
-  object-fit: cover;
+/* line 152, sass/videolayout_iparlo.scss */
+#presentation, #etherpad {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
 }
 
-/* line 113, sass/videolayout_iparlo.scss */
-#presentation,
-#etherpad,
-#localVideoWrapper > video,
-#localVideoWrapper,
+/* line 161, sass/videolayout_iparlo.scss */
+#localVideoWrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+/* line 162, sass/videolayout_iparlo.scss */
+#localVideoWrapper > video {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 178, sass/videolayout_iparlo.scss */
 .videocontainer > video {
   position: absolute;
   left: 0;
@@ -136,25 +201,28 @@
   height: 100%;
 }
 
-/* line 126, sass/videolayout_iparlo.scss */
-#etherpad,
-#presentation {
+/* line 187, sass/videolayout_iparlo.scss */
+.dominantspeaker {
+  background: #000 !important;
+}
+
+/* line 191, sass/videolayout_iparlo.scss */
+#etherpad, #presentation {
   text-align: center;
 }
 
-/* line 131, sass/videolayout_iparlo.scss */
+/* line 195, sass/videolayout_iparlo.scss */
 #etherpad {
   z-index: 0;
 }
 
-/* line 135, sass/videolayout_iparlo.scss */
+/* line 199, sass/videolayout_iparlo.scss */
 #etherpadButton {
   display: none;
 }
 
-/* line 139, sass/videolayout_iparlo.scss */
-#remoteVideos .videocontainer > span.focusindicator,
-#remoteVideos .videocontainer > span.remotevideomenu {
+/* line 205, sass/videolayout_iparlo.scss */
+#remoteVideos .videocontainer > span.focusindicator, #remoteVideos .videocontainer > span.remotevideomenu {
   display: inline-block;
   position: absolute;
   color: #FFFFFF;
@@ -168,8 +236,7 @@
   z-index: 2;
   text-align: center;
 }
-
-/* line 155, sass/videolayout_iparlo.scss */
+/* line 220, sass/videolayout_iparlo.scss */
 #remoteVideos .nick {
   display: none;
   /* enable when you want nicks to be shown */
@@ -181,13 +248,12 @@
   font-size: 10pt;
 }
 
-/* line 165, sass/videolayout_iparlo.scss */
-.videocontainer > span.displayname,
-.videocontainer > input.displayname {
+/* line 233, sass/videolayout_iparlo.scss */
+.videocontainer > span.displayname, .videocontainer > input.displayname {
   display: none;
   position: absolute;
   color: #FFFFFF;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(68, 75, 115, 0.7);
   text-align: center;
   text-overflow: ellipsis;
   width: 70%;
@@ -195,14 +261,13 @@
   left: 15%;
   top: 40%;
   padding: 5px;
-  font-size: 11pt;
+  font-size: 10pt;
   overflow: hidden;
   white-space: nowrap;
   z-index: 2;
   border-radius: 20px;
 }
-
-/* line 185, sass/videolayout_iparlo.scss */
+/* line 251, sass/videolayout_iparlo.scss */
 .videocontainer > span.status {
   display: inline-block;
   position: absolute;
@@ -222,33 +287,19 @@
   border-radius: 20px;
 }
 
-/* line 204, sass/videolayout_iparlo.scss */
+/* line 271, sass/videolayout_iparlo.scss */
 .connectionindicator {
   display: inline-block;
   position: absolute;
   top: 7px;
   right: 0;
   padding: 0px 5px;
-  z-index: 3;
+  z-index: 6;
   width: 18px;
   height: 13px;
 }
 
-/* line 216, sass/videolayout_iparlo.scss */
-.connection.connection_empty {
-  color: #8B8B8B;
-  /*#FFFFFF*/
-  overflow: hidden;
-}
-
-/* line 222, sass/videolayout_iparlo.scss */
-.connection.connection_full {
-  color: #FFFFFF;
-  /*#15A1ED*/
-  overflow: hidden;
-}
-
-/* line 228, sass/videolayout_iparlo.scss */
+/* line 282, sass/videolayout_iparlo.scss */
 .connection {
   position: absolute;
   left: 0px;
@@ -258,50 +309,56 @@
   width: 18px;
   height: 13px;
 }
+/* line 283, sass/videolayout_iparlo.scss */
+.connection.connection_empty {
+  color: #8B8B8B;
+  /*#FFFFFF*/
+  overflow: hidden;
+}
+/* line 288, sass/videolayout_iparlo.scss */
+.connection.connection_full {
+  color: #FFFFFF;
+  /*#15A1ED*/
+  overflow: hidden;
+}
 
-/* line 239, sass/videolayout_iparlo.scss */
+/* line 302, sass/videolayout_iparlo.scss */
 .connection_info {
   float: left;
   padding-bottom: 5px;
+  text-align: left;
+  font-size: 11px;
+  color: #ffffff;
 }
-
-/* line 245, sass/videolayout_iparlo.scss */
+/* line 305, sass/videolayout_iparlo.scss */
 .connection_info > table {
   white-space: nowrap;
-}
-
-/* line 250, sass/videolayout_iparlo.scss */
-.connection_info, .connection_info > table {
   text-align: left;
   font-size: 11px;
   color: #ffffff;
 }
 
-/* line 257, sass/videolayout_iparlo.scss */
-#localVideoContainer > span.status:hover,
-#localVideoContainer > span.displayname:hover {
+/* line 317, sass/videolayout_iparlo.scss */
+#localVideoContainer > span.status:hover, #localVideoContainer > span.displayname:hover {
   cursor: text;
 }
 
-/* line 262, sass/videolayout_iparlo.scss */
-.videocontainer > span.status,
-.videocontainer > span.displayname {
+/* line 324, sass/videolayout_iparlo.scss */
+.videocontainer > span.status, .videocontainer > span.displayname {
   pointer-events: none;
 }
-
-/* line 267, sass/videolayout_iparlo.scss */
+/* line 328, sass/videolayout_iparlo.scss */
 .videocontainer > input.displayname {
   height: auto;
 }
 
-/* line 271, sass/videolayout_iparlo.scss */
+/* line 333, sass/videolayout_iparlo.scss */
 #localDisplayName {
   pointer-events: auto !important;
 }
 
-/* line 275, sass/videolayout_iparlo.scss */
-.videocontainer > a.status,
-.videocontainer > a.displayname {
+/* line 339, sass/videolayout_iparlo.scss */
+.videocontainer > a.status, .videocontainer > a.displayname {
   display: inline-block;
   position: absolute;
   color: #FFFFFF;
@@ -312,8 +369,7 @@
   cursor: pointer;
   z-index: 2;
 }
-
-/* line 288, sass/videolayout_iparlo.scss */
+/* line 352, sass/videolayout_iparlo.scss */
 .videocontainer > span.audioMuted {
   display: inline-block;
   position: absolute;
@@ -324,11 +380,10 @@
   font-size: 8pt;
   text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3), 0px -1px 0px rgba(0, 0, 0, 0.7);
   border: 0px;
-  z-index: 3;
+  z-index: 6;
   text-align: center;
 }
-
-/* line 302, sass/videolayout_iparlo.scss */
+/* line 365, sass/videolayout_iparlo.scss */
 .videocontainer > span.videoMuted {
   display: inline-block;
   position: absolute;
@@ -340,10 +395,10 @@
   font-size: 8pt;
   text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3), 0px -1px 0px rgba(0, 0, 0, 0.7);
   border: 0px;
-  z-index: 3;
+  z-index: 6;
 }
 
-/* line 316, sass/videolayout_iparlo.scss */
+/* line 382, sass/videolayout_iparlo.scss */
 #reloadPresentation {
   display: none;
   position: absolute;
@@ -362,7 +417,7 @@
   /*The reload button should appear on top of the header!*/
 }
 
-/* line 333, sass/videolayout_iparlo.scss */
+/* line 399, sass/videolayout_iparlo.scss */
 #header {
   display: none;
   position: absolute;
@@ -374,7 +429,7 @@
   pointer-events: none;
 }
 
-/* line 344, sass/videolayout_iparlo.scss */
+/* line 410, sass/videolayout_iparlo.scss */
 #toolbar {
   display: inline-block;
   position: relative;
@@ -391,7 +446,7 @@
   pointer-events: auto;
 }
 
-/* line 360, sass/videolayout_iparlo.scss */
+/* line 426, sass/videolayout_iparlo.scss */
 #subject {
   position: relative;
   z-index: 3;
@@ -407,7 +462,7 @@
   display: none;
 }
 
-/* line 375, sass/videolayout_iparlo.scss */
+/* line 441, sass/videolayout_iparlo.scss */
 .audiolevel {
   display: inline-block;
   position: absolute;
@@ -416,7 +471,7 @@
   pointer-events: none;
 }
 
-/* line 383, sass/videolayout_iparlo.scss */
+/* line 449, sass/videolayout_iparlo.scss */
 #activeSpeaker {
   visibility: hidden;
   width: 150px;
@@ -426,7 +481,7 @@
   position: relative;
 }
 
-/* line 392, sass/videolayout_iparlo.scss */
+/* line 458, sass/videolayout_iparlo.scss */
 #activeSpeakerAudioLevel {
   position: absolute;
   top: 0px;
@@ -435,12 +490,12 @@
   visibility: inherit;
 }
 
-/* line 400, sass/videolayout_iparlo.scss */
+/* line 466, sass/videolayout_iparlo.scss */
 #mixedstream {
   display: none !important;
 }
 
-/* line 404, sass/videolayout_iparlo.scss */
+/* line 470, sass/videolayout_iparlo.scss */
 #activeSpeakerAvatar {
   width: 100px;
   height: 100px;
@@ -452,7 +507,7 @@
   visibility: inherit;
 }
 
-/* line 415, sass/videolayout_iparlo.scss */
+/* line 481, sass/videolayout_iparlo.scss */
 .userAvatar {
   height: 100%;
   position: absolute;

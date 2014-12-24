@@ -11,16 +11,17 @@
 }
 
 #remoteVideos {
-    display:block;
-    position:absolute;
-    text-align:right;
-    height:196px;
+    display: block;
+    position: absolute;
+    text-align: right;
+    height: 196px;
     padding: 18px;
     bottom: 0;
     left: 0;
-    right: 20px;
-    width:auto;
-    border:1px solid transparent;
+    right: 0px;
+    width: auto;
+    background: rgba($main_purple, 0.5);
+    border: 1px solid transparent;
     z-index: 5;
     transition: bottom 2s;
     overflow: visible !important;
@@ -38,54 +39,98 @@
 
 #remoteVideos .videocontainer {
     display: inline-block;
-    background-color: black;
+    background-image: url(../images/avatar1.png);
     background-size: contain;
-    border-radius:8px;
+    border-radius: 8px;
     border: 2px solid #212425;
     margin-right: 3px;
-}
-
-#remoteVideos .videocontainer:hover,
-#remoteVideos .videocontainer.videoContainerFocused {
-    width: 100%;
-    height: 100%;
-    content:"";
-    cursor: pointer;
-    cursor: hand;
-    /* transform:scale(1.08, 1.08);
-    -webkit-transform:scale(1.08, 1.08); */
-    transition-duration: 0.5s;
-    -webkit-transition-duration: 0.5s;
-    -webkit-animation-name: greyPulse;
-    -webkit-animation-duration: 2s;
-    -webkit-animation-iteration-count: 1;
-    overflow: visible !important;
-}
-
-#remoteVideos .videocontainer:hover {
-    -webkit-box-shadow: inset 0 0 10px #FFFFFF, 0 0 10px #FFFFFF;
-    border: 2px solid #FFFFFF;
-}
-
-#remoteVideos .videocontainer.videoContainerFocused {
-    -webkit-box-shadow: inset 0 0 28px #006d91;
-    border: 2px solid #006d91;
-}
-
-#remoteVideos .videocontainer.videoContainerFocused:hover {
-    -webkit-box-shadow: inset 0 0 5px #FFFFFF, 0 0 10px #FFFFFF, inset 0 0 60px #006d91;
-    border: 2px solid #FFFFFF;
+    &:hover, &.videoContainerFocused {
+        width: 100%;
+        height: 100%;
+        content: "";
+        cursor: pointer;
+        cursor: hand;
+        /* transform:scale(1.08, 1.08);
+        -webkit-transform:scale(1.08, 1.08); */
+        transition-duration: 0.5s;
+        -webkit-transition-duration: 0.5s;
+        -webkit-animation-name: greyPulse;
+        -webkit-animation-duration: 2s;
+        -webkit-animation-iteration-count: 1;
+        overflow: visible !important;
+    }
+    &:hover {
+        -webkit-box-shadow: inset 0 0 10px #FFFFFF, 0 0 10px #FFFFFF;
+        border: 2px solid #FFFFFF;
+    }
+    &.videoContainerFocused {
+        -webkit-box-shadow: inset 0 0 28px #006d91;
+        border: 2px solid #006d91;
+        &:hover {
+            -webkit-box-shadow: inset 0 0 5px white, 0 0 10px white, inset 0 0 60px #006d91;
+            border: 2px solid #FFFFFF;
+        }
+    }
 }
 
 #localVideoWrapper {
-    display:inline-block;
+    display: inline-block;
     -webkit-mask-box-image: url(../images/videomask.svg);
-    border-radius:0px !important;
+    border-radius: 0px !important;
     border: 0px !important;
 }
 
-#remoteVideos .videocontainer>video {
-    border-radius:4px;
+#remoteVideos .videocontainer > video {
+    border-radius: 4px;
+}
+
+#localMute {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: -38px;
+    line-height: 25px;
+    height: auto;
+    width: 32px;
+    border-radius: 6px;
+    color: #FFF;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(60, 63, 113, 0.7);
+    color: #fff;
+    font-size: 0.85em;
+    text-align: center;
+    padding-top: 2px;
+    content: "";
+    cursor: pointer;
+    cursor: hand;
+    opacity: 1;
+    z-index: 3;
+    .localOptions_span {
+        > span {
+            display: inline-block;
+            position: absolute;
+            font-size: 7pt;
+            color: #ffffff;
+            text-align: center;
+            cursor: pointer;
+        }
+        .optionMuteButton {
+            display: inline-block;
+            position: relative;
+            color: #FFFFFF;
+            top: 0;
+            padding-top: 6px;
+            padding-right: 2px;
+            margin: 2px;
+            width: 25px;
+            height: 20px;
+            cursor: pointer;
+            font-size: 9pt;
+            text-align: center;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3), 0 -1px 0 rgba(0, 0, 0, 0.7);
+            z-index: 5;
+        }
+    }
 }
 
 .flipVideoX {
@@ -95,26 +140,16 @@
     -o-transform: scale(-1, 1);
 }
 
-#localVideoWrapper>video {
-    border-radius:0px !important;
+#localVideoWrapper > video {
+    border-radius: 0px !important;
 }
 
-#largeVideo,
-#largeVideoContainer {
+#largeVideo, #largeVideoContainer {
     overflow: hidden;
     text-align: center;
 }
 
-#largeVideo
-{
-    object-fit: cover;
-}
-
-#presentation,
-#etherpad,
-#localVideoWrapper>video,
-#localVideoWrapper,
-.videocontainer>video {
+#presentation, #etherpad {
     position: absolute;
     left: 0;
     top: 0;
@@ -123,8 +158,37 @@
     height: 100%;
 }
 
-#etherpad,
-#presentation {
+#localVideoWrapper {
+    > video {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+    }
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.videocontainer > video {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.dominantspeaker {
+    background: #000 !important;
+}
+
+#etherpad, #presentation {
     text-align: center;
 }
 
@@ -136,97 +200,96 @@
     display: none;
 }
 
-#remoteVideos .videocontainer>span.focusindicator,
-#remoteVideos .videocontainer>span.remotevideomenu {
-    display: inline-block;
-    position: absolute;
-    color: #FFFFFF;
-    top: 0;
-    left: 0;
-    padding: 5px 0px;
-    width: 25px;
-    font-size: 11pt;
-    text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
-    border: 0px;
-    z-index: 2;
-    text-align: center;
+#remoteVideos {
+    .videocontainer > span {
+        &.focusindicator, &.remotevideomenu {
+            display: inline-block;
+            position: absolute;
+            color: #FFFFFF;
+            top: 0;
+            left: 0;
+            padding: 5px 0px;
+            width: 25px;
+            font-size: 11pt;
+            text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3), 0px -1px 0px rgba(0, 0, 0, 0.7);
+            border: 0px;
+            z-index: 2;
+            text-align: center;
+        }
+    }
+    .nick {
+        display: none;
+        /* enable when you want nicks to be shown */
+        position: absolute;
+        left: 0px;
+        bottom: -20px;
+        z-index: 0;
+        width: 100%;
+        font-size: 10pt;
+    }
 }
 
-#remoteVideos .nick {
-    display: none; /* enable when you want nicks to be shown */
-    position: absolute;
-    left: 0px;
-    bottom: -20px;
-    z-index: 0;
-    width: 100%;
-    font-size: 10pt;
+.videocontainer > {
+    span.displayname, input.displayname {
+        display: none;
+        position: absolute;
+        color: #FFFFFF;
+        background: rgba($main_blue, 0.7);
+        text-align: center;
+        text-overflow: ellipsis;
+        width: 70%;
+        height: 20%;
+        left: 15%;
+        top: 40%;
+        padding: 5px;
+        font-size: 10pt;
+        overflow: hidden;
+        white-space: nowrap;
+        z-index: 2;
+        border-radius: 20px;
+    }
+    span.status {
+        display: inline-block;
+        position: absolute;
+        color: #FFFFFF;
+        background: rgba(0, 0, 0, 0.7);
+        text-align: center;
+        text-overflow: ellipsis;
+        width: 70%;
+        height: 15%;
+        left: 15%;
+        bottom: 2%;
+        padding: 5px;
+        font-size: 10pt;
+        overflow: hidden;
+        white-space: nowrap;
+        z-index: 2;
+        border-radius: 20px;
+    }
 }
 
-.videocontainer>span.displayname,
-.videocontainer>input.displayname {
-    display: none;
-    position: absolute;
-    color: #FFFFFF;
-    background: rgba(0,0,0,.7);
-    text-align: center;
-    text-overflow: ellipsis;
-    width: 70%;
-    height: 20%;
-    left: 15%;
-    top: 40%;
-    padding: 5px;
-    font-size: 11pt;
-    overflow: hidden;
-    white-space: nowrap;
-    z-index: 2;
-    border-radius:20px;
-}
-
-.videocontainer>span.status {
-    display: inline-block;
-    position: absolute;
-    color: #FFFFFF;
-    background: rgba(0,0,0,.7);
-    text-align: center;
-    text-overflow: ellipsis;
-    width: 70%;
-    height: 15%;
-    left: 15%;
-    bottom: 2%;
-    padding: 5px;
-    font-size: 10pt;
-    overflow: hidden;
-    white-space: nowrap;
-    z-index: 2;
-    border-radius:20px;
-}
-
-.connectionindicator
-{
+.connectionindicator {
     display: inline-block;
     position: absolute;
     top: 7px;
     right: 0;
     padding: 0px 5px;
-    z-index: 3;
+    z-index: 6;
     width: 18px;
     height: 13px;
 }
 
-.connection.connection_empty
-{
-    color: #8B8B8B;/*#FFFFFF*/
-    overflow: hidden;
-}
-
-.connection.connection_full
-{
-    color: #FFFFFF;/*#15A1ED*/
-    overflow: hidden;
-}
-
-.connection
-{
+.connection {
+    &.connection_empty {
+        color: #8B8B8B;
+        /*#FFFFFF*/
+        overflow: hidden;
+    }
+    &.connection_full {
+        color: #FFFFFF;
+        /*#15A1ED*/
+        overflow: hidden;
+    }
     position: absolute;
     left: 0px;
     top: 0px;
@@ -236,82 +299,85 @@
     height: 13px;
 }
 
-.connection_info
-{
+.connection_info {
     float: left;
     padding-bottom: 5px;
-}
-
-.connection_info > table
-{
-    white-space: nowrap;
-}
-
-.connection_info, .connection_info > table
-{
+    > table {
+        white-space: nowrap;
+        text-align: left;
+        font-size: 11px;
+        color: #ffffff;
+    }
     text-align: left;
     font-size: 11px;
     color: #ffffff;
 }
 
-#localVideoContainer>span.status:hover,
-#localVideoContainer>span.displayname:hover {
-    cursor: text;
+#localVideoContainer > span {
+    &.status:hover, &.displayname:hover {
+        cursor: text;
+    }
 }
 
-.videocontainer>span.status,
-.videocontainer>span.displayname {
-    pointer-events: none;
-}
-
-.videocontainer>input.displayname {
-    height: auto;
+.videocontainer > {
+    span {
+        &.status, &.displayname {
+            pointer-events: none;
+        }
+    }
+    input.displayname {
+        height: auto;
+    }
 }
 
 #localDisplayName {
     pointer-events: auto !important;
 }
 
-.videocontainer>a.status,
-.videocontainer>a.displayname {
-    display: inline-block;
-    position: absolute;
-    color: #FFFFFF;
-    bottom: 0;
-    right: 0;
-    padding: 3px 5px;
-    font-size: 9pt;
-    cursor: pointer;
-    z-index: 2;
+.videocontainer > {
+    a {
+        &.status, &.displayname {
+            display: inline-block;
+            position: absolute;
+            color: #FFFFFF;
+            bottom: 0;
+            right: 0;
+            padding: 3px 5px;
+            font-size: 9pt;
+            cursor: pointer;
+            z-index: 2;
+        }
+    }
+    span {
+        &.audioMuted {
+            display: inline-block;
+            position: absolute;
+            color: #FFFFFF;
+            top: 0;
+            padding: 8px 5px;
+            width: 25px;
+            font-size: 8pt;
+            text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3), 0px -1px 0px rgba(0, 0, 0, 0.7);
+            border: 0px;
+            z-index: 6;
+            text-align: center;
+        }
+        &.videoMuted {
+            display: inline-block;
+            position: absolute;
+            color: #FFFFFF;
+            top: 0;
+            right: 0;
+            padding: 8px 5px;
+            width: 25px;
+            font-size: 8pt;
+            text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3), 0px -1px 0px rgba(0, 0, 0, 0.7);
+            border: 0px;
+            z-index: 6;
+        }
+    }
 }
 
-.videocontainer>span.audioMuted {
-    display: inline-block;
-    position: absolute;
-    color: #FFFFFF;
-    top: 0;
-    padding: 8px 5px;
-    width: 25px;
-    font-size: 8pt;
-    text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
-    border: 0px;
-    z-index: 3;
-    text-align: center;
-}
-
-.videocontainer>span.videoMuted {
-    display: inline-block;
-    position: absolute;
-    color: #FFFFFF;
-    top: 0;
-    right: 0;
-    padding: 8px 5px;
-    width: 25px;
-    font-size: 8pt;
-    text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
-    border: 0px;
-    z-index: 3;
-}
 
 #reloadPresentation {
     display: none;
