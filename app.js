@@ -978,9 +978,9 @@ function setVideoMute(mute, options) {
             session.setVideoMute(
                 mute,
                 function (mute) {
-                    var video = $('#video');
+                    var video = $('#videoMute');
                     var communicativeClass = "icon-camera";
-                    var muteClass = "icon-camera icon-camera-disabled";
+                    var muteClass = "icon-camera jicon-camera-disabled";
 
                     if (mute) {
                         video.removeClass(communicativeClass);
@@ -1007,7 +1007,7 @@ $(document).on('inlastnchanged', function (event, oldValue, newValue) {
  * Mutes/unmutes the local video.
  */
 function toggleVideo() {
-    buttonClick("#video", "icon-camera icon-camera-disabled");
+    buttonClick("#videoMute", "icon-camera jicon-camera-disabled");
 
     if (connection && connection.jingle.localVideo) {
         var session = getConferenceHandler();
