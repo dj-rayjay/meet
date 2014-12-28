@@ -12,91 +12,90 @@
     <meta itemprop="description" content="Join a webrtc powered video conference with iparlo"/>
     <meta itemprop="image" content="images/iparlo-logo-color.png"/>
 
-
     <script src="libs/jquery-2.1.1.min.js"></script>
-    <script src="config.js"></script><!-- adapt to your needs, i.e. set hosts and bosh path -->
-    <script src="simulcast.js?v=8"></script><!-- simulcast handling -->
-    <script src="libs/strophe/strophe.jingle.adapter.js?v=4"></script><!-- strophe.jingle bundles -->
-    <script src="libs/strophe/strophe.min.js?v=1"></script>
-    <script src="libs/strophe/strophe.disco.min.js?v=1"></script>
-    <script src="libs/strophe/strophe.caps.jsonly.min.js?v=1"></script>
-    <script src="libs/strophe/strophe.jingle.js?v=2"></script>
-    <script src="libs/strophe/strophe.jingle.sdp.js?v=2"></script>
-    <script src="libs/strophe/strophe.jingle.sdp.util.js?v=1"></script>
-    <script src="libs/strophe/strophe.jingle.sessionbase.js?v=1"></script>
-    <script src="libs/strophe/strophe.jingle.session.js?v=2"></script>
+    <script src="config.js"></script> <!-- adapt to your needs, i.e. set hosts and bosh path -->
+    <script src="simulcast.js"></script> <!-- simulcast handling -->
+    <script src="libs/strophe/strophe.jingle.adapter.js"></script> <!-- strophe.jingle bundles -->
+    <script src="libs/strophe/strophe.min.js"></script>
+    <script src="libs/strophe/strophe.disco.min.js"></script>
+    <script src="libs/strophe/strophe.caps.jsonly.min.js"></script>
+    <script src="libs/strophe/strophe.jingle.js"></script>
+    <script src="libs/strophe/strophe.jingle.sdp.js"></script>
+    <script src="libs/strophe/strophe.jingle.sdp.util.js"></script>
+    <script src="libs/strophe/strophe.jingle.sessionbase.js"></script>
+    <script src="libs/strophe/strophe.jingle.session.js?"></script>
     <script src="libs/strophe/strophe.util.js"></script>
-    <script src="libs/colibri/colibri.focus.js?v=12"></script><!-- colibri focus implementation -->
-    <script src="libs/colibri/colibri.session.js?v=1"></script>
+    <script src="libs/colibri/colibri.focus.js"></script> <!-- colibri focus implementation -->
+    <script src="libs/colibri/colibri.session.js"></script>
     <script src="libs/jquery-ui.js"></script>
-    <script src="libs/rayo.js?v=1"></script>
-    <script src="libs/tooltip.js?v=1"></script><!-- bootstrap tooltip lib -->
-    <script src="libs/popover.js?v=1"></script><!-- bootstrap tooltip lib -->
-    <script src="libs/pako.bundle.js?v=1"></script><!-- zlib deflate -->
-    <script src="libs/toastr.js?v=1"></script><!-- notifications lib -->
-    <script src="interface_config.js?v=5"></script>
-    <script src="muc.js?v=17"></script><!-- simple MUC library -->
-    <script src="estos_log.js?v=2"></script><!-- simple stanza logger -->
-    <script src="desktopsharing.js?v=3"></script><!-- desktop sharing -->
-    <script src="app.js?v=22"></script><!-- application logic -->
-    <script src="commands.js?v=1"></script><!-- application logic -->
-    <script src="chat.js?v=15"></script><!-- chat logic -->
-    <script src="contact_list.js?v=8"></script><!-- contact list logic -->
-    <script src="side_panel_toggler.js?v=1"></script>
-    <script src="util.js?v=7"></script><!-- utility functions -->
-    <script src="etherpad.js?v=10"></script><!-- etherpad plugin -->
-    <script src="prezi.js?v=7"></script><!-- prezi plugin -->
-    <script src="smileys.js?v=3"></script><!-- smiley images -->
-    <script src="replacement.js?v=7"></script><!-- link and smiley replacement -->
-    <script src="moderatemuc.js?v=4"></script><!-- moderator plugin -->
-    <script src="analytics.js?v=1"></script><!-- google analytics plugin -->
-    <script src="videolayout.js?v=31"></script><!-- video ui -->
-    <script src="connectionquality.js?v=1"></script>
-    <script src="toolbar.js?v=7"></script><!-- toolbar ui -->
-    <script src="toolbar_toggler.js?v=2"></script>
-    <script src="canvas_util.js?v=1"></script><!-- canvas drawing utils -->
-    <script src="audio_levels.js?v=4"></script><!-- audio levels plugin -->
-    <script src="media_stream.js?v=2"></script><!-- media stream -->
-    <script src="bottom_toolbar.js?v=6"></script><!-- media stream -->
-    <script src="moderator.js?v=2"></script><!-- media stream -->
-    <script src="roomname_generator.js?v=1"></script><!-- generator for random room names -->
-    <script src="keyboard_shortcut.js?v=3"></script>
-    <script src="recording.js?v=1"></script>
-    <script src="tracking.js?v=1"></script><!-- tracking -->
-    <script src="jitsipopover.js?v=3"></script>
-    <script src="message_handler.js?v=2"></script>
-    <script src="api_connector.js?v=2"></script>
-    <script src="settings_menu.js?v=1"></script>
-    <script src="service/RTC/RTCBrowserType.js?v=1"></script>
-    <script src="service/RTC/StreamEventTypes.js?v=1"></script>
-    <script src="service/RTC/MediaStreamTypes.js?v=1"></script>
-    <script src="libs/modules/statistics.bundle.js?v=1"></script>
-    <script src="libs/modules/RTC.bundle.js?v=1"></script>
-    <script src="avatar.js?v=4"></script><!-- avatars -->
+    <script src="libs/rayo.js"></script>
+    <script src="libs/tooltip.js"></script><!-- bootstrap tooltip lib -->
+    <script src="libs/popover.js"></script><!-- bootstrap tooltip lib -->
+    <script src="libs/pako.bundle.js"></script><!-- zlib deflate -->
+    <script src="libs/toastr.js"></script><!-- notifications lib -->
+    <script src="interface_config.js"></script>
+    <script src="muc.js"></script><!-- simple MUC library -->
+    <script src="estos_log.js"></script><!-- simple stanza logger -->
+    <script src="desktopsharing.js"></script><!-- desktop sharing -->
+    <script src="app.js"></script><!-- application logic -->
+    <script src="commands.js"></script><!-- application logic -->
+    <script src="chat.js"></script><!-- chat logic -->
+    <script src="contact_list.js"></script><!-- contact list logic -->
+    <script src="side_panel_toggler.js"></script>
+    <script src="util.js"></script><!-- utility functions -->
+    <script src="etherpad.js"></script><!-- etherpad plugin -->
+    <script src="prezi.js"></script><!-- prezi plugin -->
+    <script src="smileys.js"></script><!-- smiley images -->
+    <script src="replacement.js"></script><!-- link and smiley replacement -->
+    <script src="moderatemuc.js"></script><!-- moderator plugin -->
+    <script src="analytics.js"></script><!-- google analytics plugin -->
+    <script src="videolayout.js"></script><!-- video ui -->
+    <script src="connectionquality.js"></script>
+    <script src="toolbar.js"></script><!-- toolbar ui -->
+    <script src="toolbar_toggler.js"></script>
+    <script src="canvas_util.js"></script><!-- canvas drawing utils -->
+    <script src="audio_levels.js"></script><!-- audio levels plugin -->
+    <script src="media_stream.js"></script><!-- media stream -->
+    <script src="bottom_toolbar.js"></script><!-- media stream -->
+    <script src="moderator.js"></script><!-- media stream -->
+    <script src="roomname_generator.js"></script><!-- generator for random room names -->
+    <script src="keyboard_shortcut.js"></script>
+    <script src="recording.js"></script>
+    <script src="tracking.js"></script><!-- tracking -->
+    <script src="jitsipopover.js"></script>
+    <script src="message_handler.js"></script>
+    <script src="api_connector.js"></script>
+    <script src="settings_menu.js"></script>
+    <script src="service/RTC/RTCBrowserType.js"></script>
+    <script src="service/RTC/StreamEventTypes.js"></script>
+    <script src="service/RTC/MediaStreamTypes.js"></script>
+    <script src="libs/modules/statistics.bundle.js"></script>
+    <script src="libs/modules/RTC.bundle.js"></script>
+    <script src="avatar.js"></script><!-- avatars -->
 
     <link href='//fonts.googleapis.com/css?family=Raleway:300,500,100' rel='stylesheet' type='text/css'>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/font.css?v=6"/>
-    <link rel="stylesheet" href="css/toastr.css?v=1">
+    <link rel="stylesheet" href="css/font.css"/>
+    <link rel="stylesheet" href="css/toastr.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/main_iparlo.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="css/videolayout_iparlo.css" id="videolayout_iparlo"/>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/jquery-impromptu.css?v=4">
-    <link rel="stylesheet" href="css/modaldialog.css?v=3">
-    <link rel="stylesheet" href="css/popup_menu.css?v=4">
-    <link rel="stylesheet" href="css/popover.css?v=2">
-    <link rel="stylesheet" href="css/jitsi_popover.css?v=2">
-    <link rel="stylesheet" href="css/contact_list.css?v=4">
+    <link rel="stylesheet" href="css/jquery-impromptu.css">
+    <link rel="stylesheet" href="css/modaldialog.css">
+    <link rel="stylesheet" href="css/popup_menu.css">
+    <link rel="stylesheet" href="css/popover.css">
+    <link rel="stylesheet" href="css/jitsi_popover.css">
+    <link rel="stylesheet" href="css/contact_list.css">
     <link rel="stylesheet" href="css/chat_iparlo.css">
-    <link rel="stylesheet" href="css/welcome_page.css?v=2">
-    <link rel="stylesheet" href="css/settingsmenu.css?v=1">
+    <link rel="stylesheet" href="css/welcome_page.css">
+    <link rel="stylesheet" href="css/settingsmenu.css">
     <!--
         Link used for inline installation of chrome desktop streaming extension,
         is updated automatically from the code with the value defined in config.js -->
     <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/fbalddklnheneegehijmjanjbjimckgi">
     <script src="libs/jquery-impromptu.js"></script>
     <script src="libs/jquery.autosize.js"></script>
-    <script src="libs/prezi_player.js?v=2"></script>
+    <script src="libs/prezi_player.js"></script>
   </head>
   <body>
     <div id="welcome_page">
@@ -240,8 +239,6 @@
           </div>
           <video id="largeVideo" autoplay oncontextmenu="return false;"></video>
         </div>
-
-
 
         <div id="remoteVideos">
                 <span id="localVideoContainer" class="videocontainer">
