@@ -1374,6 +1374,9 @@ $(document).ready(function () {
         }
     })
 
+    // TO added 28.12.2014
+    // avoid changing focus when pressing mute
+    $('#localMute').click( function(e) {e.stopPropagation();} );
 });
 
 $(window).bind('beforeunload', function () {
