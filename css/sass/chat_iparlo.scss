@@ -1,14 +1,16 @@
 /* Converted to SCSS from original version: Thomas 24.12.2014 */
 @import "_base";
 
-#chatspace {
-    background-color: black;
-    border-left: 1px solid #424242;
-}
 
-#chatspace * {
-    -webkit-user-select: text;
-    user-select: text;
+#chatspace {
+    /* background-color: black;*/
+    background-color: $main_purple;
+    border-left: 0;
+    /* 1px solid #424242 */
+    * {
+        -webkit-user-select: text;
+        user-select: text;
+    }
 }
 
 #chatconversation {
@@ -39,29 +41,28 @@
 }
 
 #usermsg {
-    visibility:hidden;
+    visibility: hidden;
     position: absolute;
     bottom: 0px;
     right: 0px;
     width: 83%;
     height: 30px;
     padding: 5px 5px 5px 0px;
-    max-height:150px;
-    min-height:35px;
+    max-height: 150px;
+    min-height: 35px;
     border: 0px none;
-    background: #3a3a3a;
-    color: #a7a7a7;
+    background: $main_blue;
+    color: #ffffff;
     box-shadow: none;
-    border-radius:0;
+    border-radius: 0;
     font-size: 10pt;
     line-height: 30px;
     overflow: hidden;
     resize: none;
-}
-
-#usermsg:hover {
-    border: 0px none;
-    box-shadow: none;
+    &:hover {
+        border: 0px none;
+        box-shadow: none;
+    }
 }
 
 #nickname {
@@ -88,7 +89,7 @@
     font-size: 8px;
     position: absolute;
     left: 46%;
-    top: 27%
+    top: 27%;
 }
 
 #bottomUnreadMessages {
@@ -98,21 +99,21 @@
     font-size: 8px;
 }
 
-#chatspace .username {
-    float: left;
-    padding-left: 5px;
-    font-weight: bold;
-}
-
-#chatspace .timestamp {
-    float: right;
-    padding-right: 5px;
-    font-size: 11px;
-}
-
-#chatspace .usermessage {
-    padding-top: 20px;
-    padding-left: 5px;
+#chatspace {
+    .username {
+        float: left;
+        padding-left: 5px;
+        font-weight: bold;
+    }
+    .timestamp {
+        float: right;
+        padding-right: 5px;
+        font-size: 11px;
+    }
+    .usermessage {
+        padding-top: 20px;
+        padding-left: 5px;
+    }
 }
 
 .chatArrow {
@@ -148,11 +149,10 @@
     height: 26px;
     margin: auto;
     cursor: pointer;
-}
-
-#smileys img {
-    width: 22px;
-    padding: 2px;
+    img {
+        width: 22px;
+        padding: 2px;
+    }
 }
 
 #smileysarea {
@@ -163,10 +163,10 @@
     min-width: 31px;
     height: 40px;
     padding: 0px;
-    max-height:150px;
-    min-height:35px;
+    max-height: 150px;
+    min-height: 35px;
     border: 0px none;
-    background: #3a3a3a;
+    background: $main_blue;
     overflow: hidden;
     visibility: hidden;
 }
@@ -174,55 +174,53 @@
 #smileysContainer {
     display: none;
     position: absolute;
-    background: #3a3a3a;
+    background: $main_blue;
     border-bottom: 1px solid;
     border-top: 1px solid;
     width: 100%;
     bottom: 10%;
-}
-
-#smileysContainer .smiley {
-    padding: 7px;
+    .smiley {
+        padding: 7px;
+    }
 }
 
 .smileyContainer {
     width: 40px;
     height: 40px;
     display: inline-block;
-}
-
-.smileyContainer:hover {
-    background: #3e3e3e;
+    &:hover {
+        background: $main_blue;
+    }
 }
 
 #usermsg::-webkit-input-placeholder {
     line-height: 30px;
 }
 
-::-webkit-scrollbar {
-    background: #06a5df;
-    width: 7px;
+#chatconversation {
+    &::-webkit-scrollbar {
+        background: $main_purple;
+        width: 7px;
+    }
+    &::-webkit-scrollbar-button {
+        display: none;
+    }
+    &::-webkit-scrollbar-track, &::-webkit-scrollbar-track-piece {
+        background: $main_purple;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #06A5DF;
+        border-radius: 4px;
+    }
 }
 
-::-webkit-scrollbar-button {
-    display: none;
-}
-
-::-webkit-scrollbar-track {
-    background: black;
-}
-
-::-webkit-scrollbar-track-piece {
-    background: black;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #06a5df;
-    border-radius: 4px;
-}
-
-#usermsg::-webkit-scrollbar-track-piece {
-    background: #3a3a3a;
+#usermsg {
+    &::-webkit-scrollbar-track, &::-webkit-scrollbar-track-piece {
+        background: $main_blue;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #06A5DF;
+    }
 }
 
 a:link {

@@ -289,14 +289,14 @@ var Chat = (function (my) {
                     'top:' + bottomTopIndent +
                     '; left:' + bottomLeftIndent + ';');
 
-
-            if (!glower.hasClass('icon-chat-simple')) {
-                glower.removeClass('icon-chat');
-                glower.addClass('icon-chat-simple');
-            }
+            // TO removed: only chatBottom... in use
+            //if (!glower.hasClass('icon-chat-simple')) {
+            //    glower.removeClass('icon-chat');
+            //    glower.addClass('icon-chat-simple');
+            //}
         }
         else {
-            unreadMsgElement.innerHTML = '';
+            //TO removed //unreadMsgElement.innerHTML = '';
             unreadMsgBottomElement.innerHTML = '';
             glower.removeClass('icon-chat-simple');
             glower.addClass('icon-chat');
