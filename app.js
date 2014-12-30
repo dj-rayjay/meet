@@ -147,6 +147,12 @@ function generateRoomName() {
     var roomnode = null;
     var path = window.location.pathname;
 
+    // this is a hack to avoid room names with trailing slash, eg. when run in a debugger locally
+    // TODO: whe should handle slashes anyhow (not allowed roomname)
+    if (path.slice(-1) == "/") {
+        path = "";
+    }
+
     // determinde the room node from the url
     // TODO: just the roomnode or the whole bare jid?
     if (config.getroomnode && typeof config.getroomnode === 'function') {
@@ -980,7 +986,7 @@ function setVideoMute(mute, options) {
                 function (mute) {
                     var video = $('#videoMute');
                     var communicativeClass = "icon-videocam";
-                    var muteClass = "icon-camera jicon-camera-disabled";
+                    var muteClass = "jicon-camera-disabled";
 
                     if (mute) {
                         video.removeClass(communicativeClass);
