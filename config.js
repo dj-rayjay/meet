@@ -7,7 +7,7 @@ var config = {
         call_control: 'callcontrol.meet03.iparlo.net' //,
         //focus: 'focus.meet.iparlo.net' - defaults to 'focus.meet.iparlo.net'
     },
-//  getroomnode: function (path) { return 'someprefixpossiblybasedonpath'; },
+    getroomnode: function(){ return 'test4321'; },
 //  useStunTurn: true, // use XEP-0215 to fetch STUN and TURN server
 //  useIPv6: true, // ipv6 support. use at your own risk
     useNicks: false,
