@@ -1,9 +1,7 @@
 //This should be uncommented when app.js supports require
 //var RTCBrowserType = require("../../service/RTC/RTCBrowserType.js");
 
-var constraints = {audio: false, video: false};
-
-function setResolutionConstraints(resolution, isAndroid)
+function setResolutionConstraints(constraints, resolution, isAndroid)
 {
     if (resolution && !constraints.video || isAndroid) {
         constraints.video = { mandatory: {}, optional: [] };// same behaviour as true
@@ -58,8 +56,10 @@ function setResolutionConstraints(resolution, isAndroid)
 }
 
 
-function setConstraints(um, resolution, bandwidth, fps, desktopStream, isAndroid)
+function getConstraints(um, resolution, bandwidth, fps, desktopStream, isAndroid)
 {
+    var constraints = {audio: false, video: false};
+
     if (um.indexOf('video') >= 0) {
         constraints.video = { mandatory: {}, optional: [] };// same behaviour as true
     }
@@ -115,7 +115,7 @@ function setConstraints(um, resolution, bandwidth, fps, desktopStream, isAndroid
         }
     }
 
-    setResolutionConstraints(resolution, isAndroid);
+    setResolutionConstraints(constraints, resolution, isAndroid);
 
     if (bandwidth) { // doesn't work currently, see webrtc issue 1846
         if (!constraints.video) constraints.video = {mandatory: {}, optional: []};//same behaviour as true
@@ -126,6 +126,8 @@ function setConstraints(um, resolution, bandwidth, fps, desktopStream, isAndroid
         if (!constraints.video) constraints.video = {mandatory: {}, optional: []};// same behaviour as true;
         constraints.video.mandatory.minFrameRate = fps;
     }
+
+    return constraints;
 }
 
 
@@ -220,7 +222,8 @@ RTCUtils.prototype.getUserMediaWithConstraints = function(
     // Check if we are running on Android device
     var isAndroid = navigator.userAgent.indexOf('Android') != -1;
 
-    setConstraints(um, resolution, bandwidth, fps, desktopStream, isAndroid);
+    var constraints = getConstraints(
+        um, resolution, bandwidth, fps, desktopStream, isAndroid);
 
     var isFF = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 
@@ -251,7 +254,8 @@ RTCUtils.prototype.getUserMediaWithConstraints = function(
                     success_callback(stream);
                 },
                 function (error) {
-                    console.warn('Failed to get access to local media. Error ', error);
+                    console.warn('Failed to get access to local media. Error ',
+                        error, constraints);
                     if (failure_callback) {
                         failure_callback(error);
                     }
@@ -276,10 +280,6 @@ RTCUtils.prototype.obtainAudioAndVideoPermissions = function() {
     var cb = function (stream) {
         console.log('got', stream, stream.getAudioTracks().length, stream.getVideoTracks().length);
         self.handleLocalStream(stream);
-        trackUsage('localMedia', {
-            audio: stream.getAudioTracks().length,
-            video: stream.getVideoTracks().length
-        });
     };
     var self = this;
     this.getUserMediaWithConstraints(
@@ -292,11 +292,7 @@ RTCUtils.prototype.obtainAudioAndVideoPermissions = function() {
                 cb,
                 function (error) {
                     console.error('failed to obtain audio/video stream - stop', error);
-                    trackUsage('localMediaError', {
-                        media: error.media || 'video',
-                        name : error.name
-                    });
-                    messageHandler.showError("Error",
+                    UI.messageHandler.showError("Error",
                             "Failed to obtain permissions to use the local microphone" +
                             "and/or camera.");
                 }

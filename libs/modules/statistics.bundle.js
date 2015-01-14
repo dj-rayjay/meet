@@ -399,9 +399,9 @@ StatsCollector.prototype.start = function ()
                     {
                         self.processStatsReport();
                     }
-                    catch(e)
+                    catch (e)
                     {
-                        console.error("Unsupported key:" + e);
+                        console.error("Unsupported key:" + e, e);
                     }
 
                     self.baselineStatsReport = self.currentStatsReport;
@@ -598,7 +598,7 @@ StatsCollector.prototype.processStatsReport = function () {
         if(!ssrc)
             continue;
         var jid = ssrc2jid[ssrc];
-        if (!jid) {
+        if (!jid && (Date.now() - now.timestamp) < 3000) {
             console.warn("No jid for ssrc: " + ssrc);
             continue;
         }
@@ -799,7 +799,7 @@ StatsCollector.prototype.processAudioLevelReport = function ()
 
         var ssrc = getStatValue(now, 'ssrc');
         var jid = ssrc2jid[ssrc];
-        if (!jid)
+        if (!jid && (Date.now() - now.timestamp) < 3000)
         {
             console.warn("No jid for ssrc: " + ssrc);
             continue;
@@ -894,10 +894,10 @@ function startRemoteStats (peerconnection) {
 
 function onStreamCreated(stream)
 {
-    if(stream.getAudioTracks().length === 0)
+    if(stream.getOriginalStream().getAudioTracks().length === 0)
         return;
 
-    localStats = new LocalStats(stream, 100, this,
+    localStats = new LocalStats(stream.getOriginalStream(), 100, statistics,
         eventEmitter);
     localStats.start();
 }
@@ -969,6 +969,8 @@ var statistics =
     },
 
     start: function () {
+        this.addConnectionStatsListener(connectionquality.updateLocalStats);
+        this.addRemoteStatsStopListener(connectionquality.stopSendingStats);
         RTC.addStreamListener(onStreamCreated,
             StreamEventTypes.EVENT_TYPE_LOCAL_CREATED);
     }
@@ -1039,10 +1041,8 @@ EventEmitter.prototype.emit = function(type) {
       er = arguments[1];
       if (er instanceof Error) {
         throw er; // Unhandled 'error' event
-      } else {
-        throw TypeError('Uncaught, unspecified "error" event.');
       }
-      return false;
+      throw TypeError('Uncaught, unspecified "error" event.');
     }
   }
 

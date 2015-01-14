@@ -1,5 +1,5 @@
 /* global $, $iq, config, connection, Etherpad, hangUp, messageHandler,
- roomName, sessionTerminated, Strophe, Toolbar, Util, VideoLayout */
+ roomName, sessionTerminated, Strophe, Util */
 /**
  * Contains logic responsible for enabling/disabling functionality available
  * only to moderator users.
@@ -11,58 +11,45 @@ var Moderator = (function (my) {
     var getNextErrorTimeout = Util.createExpBackoffTimer(1000);
     // External authentication stuff
     var externalAuthEnabled = false;
+    // Sip gateway can be enabled by configuring Jigasi host in config.js or
+    // it will be enabled automatically if focus detects the component through
+    // service discovery.
+    var sipGatewayEnabled = config.hosts.call_control !== undefined;
 
     my.isModerator = function () {
-        return connection.emuc.isModerator();
+        return connection && connection.emuc.isModerator();
     };
 
     my.isPeerModerator = function (peerJid) {
-        return connection.emuc.getMemberRole(peerJid) === 'moderator';
+        return connection && connection.emuc.getMemberRole(peerJid) === 'moderator';
     };
 
     my.isExternalAuthEnabled = function () {
         return externalAuthEnabled;
     };
 
-    my.onModeratorStatusChanged = function (isModerator) {
-
-        Toolbar.showSipCallButton(isModerator);
-        Toolbar.showRecordingButton(
-                isModerator); //&&
-                // FIXME:
-                // Recording visible if
-                // there are at least 2(+ 1 focus) participants
-                //Object.keys(connection.emuc.members).length >= 3);
-
-        if (isModerator && config.etherpad_base) {
-            Etherpad.init();
-        }
+    my.isSipGatewayEnabled = function () {
+        return sipGatewayEnabled;
     };
 
     my.init = function () {
-        $(document).bind(
-            'local.role.changed.muc',
-            function (event, jid, info, pres) {
-                Moderator.onModeratorStatusChanged(Moderator.isModerator());
-            }
-        );
-
-        $(document).bind(
-            'left.muc',
-            function (event, jid) {
-                console.info("Someone left is it focus ? " + jid);
-                var resource = Strophe.getResourceFromJid(jid);
-                if (resource === 'focus' && !sessionTerminated) {
-                    console.info(
-                        "Focus has left the room - leaving conference");
-                    //hangUp();
-                    // We'd rather reload to have everything re-initialized
-                    // FIXME: show some message before reload
-                    location.reload();
-                }
-            }
-        );
+        Moderator.onLocalRoleChange = function (from, member, pres) {
+            UI.onModeratorStatusChanged(Moderator.isModerator());
+        };
     };
+
+    my.onMucLeft = function (jid) {
+        console.info("Someone left is it focus ? " + jid);
+        var resource = Strophe.getResourceFromJid(jid);
+        if (resource === 'focus' && !sessionTerminated) {
+            console.info(
+                "Focus has left the room - leaving conference");
+            //hangUp();
+            // We'd rather reload to have everything re-initialized
+            // FIXME: show some message before reload
+            location.reload();
+        }
+    }
 
     my.setFocusUserJid = function (focusJid) {
         if (!focusUserJid) {
@@ -97,6 +84,14 @@ var Moderator = (function (my) {
             elem.c(
                 'property',
                 { name: 'bridge', value: config.hosts.bridge})
+                .up();
+        }
+        // Tell the focus we have Jigasi configured
+        if (config.hosts.call_control !== undefined)
+        {
+            elem.c(
+                'property',
+                { name: 'call_control', value: config.hosts.call_control})
                 .up();
         }
         if (config.channelLastN !== undefined)
@@ -148,7 +143,17 @@ var Moderator = (function (my) {
         if (extAuthParam.length) {
             externalAuthEnabled = extAuthParam.attr('value') === 'true';
         }
+
         console.info("External authentication enabled: " + externalAuthEnabled);
+
+        // Check if focus has auto-detected Jigasi component(this will be also
+        // included if we have passed our host from the config)
+        if ($(resultIq).find(
+                '>conference>property[name=\'sipGatewayEnabled\']').length) {
+            sipGatewayEnabled = true;
+        }
+
+        console.info("Sip gateway enabled: " + sipGatewayEnabled);
     };
 
     // FIXME: we need to show the fact that we're waiting for the focus
@@ -185,13 +190,13 @@ var Moderator = (function (my) {
                 // Not authorized to create new room
                 if ($(error).find('>error>not-authorized').length) {
                     console.warn("Unauthorized to start the conference");
-                    $(document).trigger('auth_required.moderator');
+                    UI.onAuthenticationRequired();
                     return;
                 }
                 var waitMs = getNextErrorTimeout();
                 console.error("Focus error, retry after " + waitMs, error);
                 // Show message
-                messageHandler.notify(
+                UI.messageHandler.notify(
                     'Conference focus', 'disconnected',
                     Moderator.getFocusComponent() +
                     ' not available - retry in ' + (waitMs / 1000) + ' sec');

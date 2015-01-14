@@ -1,4 +1,23 @@
 /* jshint -W117 */
+
+
+function CallIncomingJingle(sid) {
+    var sess = connection.jingle.sessions[sid];
+
+    // TODO: do we check activecall == null?
+    activecall = sess;
+
+    statistics.onConferenceCreated(sess);
+    RTC.onConferenceCreated(sess);
+
+    // TODO: check affiliation and/or role
+    console.log('emuc data for', sess.peerjid, connection.emuc.members[sess.peerjid]);
+    sess.usedrip = true; // not-so-naive trickle ice
+    sess.sendAnswer();
+    sess.accept();
+
+};
+
 Strophe.addConnectionPlugin('jingle', {
     connection: null,
     sessions: {},
@@ -110,7 +129,7 @@ Strophe.addConnectionPlugin('jingle', {
                 // the callback should either
                 // .sendAnswer and .accept
                 // or .sendTerminate -- not necessarily synchronus
-                $(document).trigger('callincoming.jingle', [sess.sid]);
+                CallIncomingJingle(sess.sid);
                 break;
             case 'session-accept':
                 sess.setRemoteDescription($(iq).find('>jingle'), 'answer');
@@ -302,5 +321,24 @@ Strophe.addConnectionPlugin('jingle', {
             }
         );
         // implement push?
+    },
+
+    /**
+     * Populates the log data
+     */
+    populateData: function () {
+        var data = {};
+        Object.keys(this.sessions).forEach(function (sid) {
+            var session = this.sessions[sid];
+            if (session.peerconnection && session.peerconnection.updateLog) {
+                // FIXME: should probably be a .dump call
+                data["jingle_" + session.sid] = {
+                    updateLog: session.peerconnection.updateLog,
+                    stats: session.peerconnection.stats,
+                    url: window.location.href
+                };
+            }
+        });
+        return data;
     }
 });

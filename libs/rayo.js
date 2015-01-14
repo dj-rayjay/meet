@@ -18,13 +18,13 @@ Strophe.addConnectionPlugin('rayo',
         {
             console.info("Rayo IQ", iq);
         },
-        dial: function (to, from, roomName)
+        dial: function (to, from, roomName, roomPass)
         {
             var self = this;
             var req = $iq(
                 {
                     type: 'set',
-                    to: config.hosts.call_control
+                    to: focusMucJid
                 }
             );
             req.c('dial',
@@ -37,7 +37,16 @@ Strophe.addConnectionPlugin('rayo',
                 {
                     name: 'JvbRoomName',
                     value: roomName
-                });
+                }).up();
+
+            if (roomPass !== null && roomPass.length) {
+
+                req.c('header',
+                    {
+                        name: 'JvbRoomPassword',
+                        value: roomPass
+                    }).up();
+            }
 
             this.connection.sendIQ(
                 req,

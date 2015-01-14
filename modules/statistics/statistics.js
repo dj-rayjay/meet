@@ -51,10 +51,10 @@ function startRemoteStats (peerconnection) {
 
 function onStreamCreated(stream)
 {
-    if(stream.getAudioTracks().length === 0)
+    if(stream.getOriginalStream().getAudioTracks().length === 0)
         return;
 
-    localStats = new LocalStats(stream, 100, this,
+    localStats = new LocalStats(stream.getOriginalStream(), 100, statistics,
         eventEmitter);
     localStats.start();
 }
@@ -126,6 +126,8 @@ var statistics =
     },
 
     start: function () {
+        this.addConnectionStatsListener(connectionquality.updateLocalStats);
+        this.addRemoteStatsStopListener(connectionquality.stopSendingStats);
         RTC.addStreamListener(onStreamCreated,
             StreamEventTypes.EVENT_TYPE_LOCAL_CREATED);
     }

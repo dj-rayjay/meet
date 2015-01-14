@@ -12,15 +12,14 @@
     <meta itemprop="description" content="Join a webrtc powered video conference with iparlo"/>
     <meta itemprop="image" content="images/iparlo-logo-color.png"/>
     <script src="libs/jquery-2.1.1.min.js"></script>
-    <script src="config.js?v=5"></script><!-- adapt to your needs, i.e. set hosts and bosh path -->
-    <script src="simulcast.js?v=8"></script><!-- simulcast handling -->
-    <script src="libs/strophe/strophe.jingle.adapter.js?v=4"></script><!-- strophe.jingle bundles -->
-    <script src="libs/strophe/strophe.min.js?v=1"></script>
-    <script src="libs/strophe/strophe.disco.min.js?v=1"></script>
-    <script src="libs/strophe/strophe.caps.jsonly.min.js?v=1"></script>
-    <script src="libs/strophe/strophe.jingle.js?v=2"></script>
-    <script src="libs/strophe/strophe.jingle.sdp.js?v=3"></script>
-    <script src="libs/strophe/strophe.jingle.session.js?v=3"></script>
+    <script src="config.js"></script><!-- adapt to your needs, i.e. set hosts and bosh path -->
+    <script src="libs/strophe/strophe.jingle.adapter.js"></script><!-- strophe.jingle bundles -->
+    <script src="libs/strophe/strophe.min.js"></script>
+    <script src="libs/strophe/strophe.disco.min.js"></script>
+    <script src="libs/strophe/strophe.caps.jsonly.min.js"></script>
+    <script src="libs/strophe/strophe.jingle.js"></script>
+    <script src="libs/strophe/strophe.jingle.sdp.js"></script>
+    <script src="libs/strophe/strophe.jingle.session.js"></script>
     <script src="libs/strophe/strophe.util.js"></script>
     <script src="libs/jquery-ui.js"></script>
     <script src="libs/rayo.js"></script>
@@ -29,46 +28,28 @@
     <script src="libs/pako.bundle.js"></script><!-- zlib deflate -->
     <script src="libs/toastr.js"></script><!-- notifications lib -->
     <script src="interface_config.js"></script>
+    <script src="service/RTC/RTCBrowserType.js?v=1"></script>
+    <script src="service/RTC/StreamEventTypes.js?v=1"></script>
+    <script src="service/RTC/MediaStreamTypes.js?v=1"></script>
+    <script src="libs/modules/simulcast.bundle.js?v=1"></script>
+    <script src="libs/modules/connectionquality.bundle.js?v=1"></script>
+    <script src="libs/modules/UI.bundle.js"></script>
+    <script src="libs/modules/statistics.bundle.js?v=1"></script>
+    <script src="libs/modules/RTC.bundle.js?v=1"></script>
     <script src="muc.js"></script><!-- simple MUC library -->
     <script src="estos_log.js"></script><!-- simple stanza logger -->
     <script src="desktopsharing.js"></script><!-- desktop sharing -->
     <script src="app.js"></script><!-- application logic -->
-    <script src="commands.js"></script><!-- application logic -->
-    <script src="chat.js"></script><!-- chat logic -->
-    <script src="contact_list.js"></script><!-- contact list logic -->
-    <script src="side_panel_toggler.js"></script>
+    <script src="libs/modules/API.bundle.js?v=1"></script>
     <script src="util.js"></script><!-- utility functions -->
-    <script src="etherpad.js"></script><!-- etherpad plugin -->
-    <script src="prezi.js"></script><!-- prezi plugin -->
-    <script src="smileys.js"></script><!-- smiley images -->
-    <script src="replacement.js"></script><!-- link and smiley replacement -->
     <script src="moderatemuc.js"></script><!-- moderator plugin -->
     <script src="analytics.js"></script><!-- google analytics plugin -->
-    <script src="videolayout.js"></script><!-- video ui -->
-    <script src="connectionquality.js"></script>
-    <script src="toolbar.js"></script><!-- toolbar ui -->
-    <script src="toolbar_toggler.js"></script>
-    <script src="canvas_util.js"></script><!-- canvas drawing utils -->
-    <script src="audio_levels.js"></script><!-- audio levels plugin -->
-    <script src="media_stream.js"></script><!-- media stream -->
-    <script src="bottom_toolbar.js"></script><!-- media stream -->
     <script src="moderator.js"></script><!-- media stream -->
-    <script src="roomname_generator.js"></script><!-- generator for random room names -->
     <script src="keyboard_shortcut.js"></script>
     <script src="recording.js"></script>
-    <script src="tracking.js"></script><!-- tracking -->
-    <script src="jitsipopover.js"></script>
-    <script src="message_handler.js"></script>
-    <script src="api_connector.js"></script>
-    <script src="settings_menu.js"></script>
-    <script src="service/RTC/RTCBrowserType.js"></script>
-    <script src="service/RTC/StreamEventTypes.js"></script>
-    <script src="service/RTC/MediaStreamTypes.js"></script>
-    <script src="libs/modules/statistics.bundle.js"></script>
-    <script src="libs/modules/RTC.bundle.js"></script>
-    <script src="avatar.js"></script><!-- avatars -->
 
     <link href='//fonts.googleapis.com/css?family=Raleway:300,500,100' rel='stylesheet' type='text/css'>
+
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="css/font.css"/>
     <link rel="stylesheet" href="css/toastr.css">
@@ -90,85 +71,16 @@
     <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/fbalddklnheneegehijmjanjbjimckgi">
     <script src="libs/jquery-impromptu.js"></script>
     <script src="libs/jquery.autosize.js"></script>
-    <script src="libs/prezi_player.js"></script>
+
   </head>
   <body>
     <div id="welcome_page">
-        <div id="welcome_page_header">
-            <a target="_new">
-                <div class="watermark leftwatermark"></div>
-            </a>
 
-            <div id="enter_room_container">
-                    <div id="enter_room_form" >
-                        <div id="domain_name"></div>
-                        <div id="enter_room">
-                            <input id="enter_room_field" type="text" autofocus placeholder="Enter room name" />
-                            <div class="icon-reload" id="reload_roomname"></div>
-                            <input id="enter_room_button" type="button" value="GO" />
-
-                        </div>
-                    </div>
-            </div>
-            <div id="brand_header"></div>
-            <input type='checkbox' name='checkbox' id="disable_welcome"/>
-            <label for="disable_welcome" class="disable_welcome_position">Don't show this page next time I enter</label>
-            <div id="header_text"></div>
-        </div>
-        <div id="welcome_page_main">
-            <div id="features">
-                <div class="feature_row">
-                    <div class="feature_holder">
-                        <div class="feature_icon">Simple to use</div>
-                        <div class="feature_description">
-                            No downloads required. <span name="appName"></span> works directly within your browser. Simply share your conference URL with others to get started.
-                        </div>
-                    </div>
-                    <div class="feature_holder">
-                        <div class="feature_icon">Low bandwidth</div>
-                        <div class="feature_description">
-                            Multi-party video conferences work with as little as 128Kbps. Screen-sharing and audio-only conferences are possible with far less.
-                        </div>
-                    </div>
-                    <div class="feature_holder">
-                        <div class="feature_icon">Open source</div>
-                        <div class="feature_description">
-                            <span name="appName"></span> is licensed under MIT. You are free to download, use, modify, and share them as per these licenses.
-                        </div>
-                    </div>
-                    <div class="feature_holder">
-                        <div class="feature_icon">Unlimited users</div>
-                        <div class="feature_description">
-                            There are no artificial restrictions on the number of users or conference participants. Server power and bandwidth are the only limiting factors.
-                        </div>
-                    </div>
-                </div>
-                <div class="feature_row">
-                    <div class="feature_holder">
-                        <div class="feature_icon">Screen sharing</div>
-                        <div class="feature_description">
-                            It's easy to share your screen with others. <span name="appName"></span> is ideal for on-line presentations, lectures, and tech support sessions.
-                        </div>
-                    </div>
-                    <div class="feature_holder">
-                        <div class="feature_icon">Secure rooms</div>
-                        <div class="feature_description">
-                            Need some privacy? <span name="appName"></span> conference rooms can be secured with a password in order to exclude unwanted guests and prevent interruptions.
-                        </div>
-                    </div>
-                    <div class="feature_holder">
-                        <div class="feature_icon">Usage statistics</div>
-                        <div class="feature_description">
-                            Learn about your users through easy integration with Piwik, Google Analytics, and other usage monitoring and statistics systems.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 
     <div id="videoconference_page">
+
       <div style="position: relative;" id="header_container">
 
         <div id="subject"></div>
@@ -181,6 +93,7 @@
           <div class="arrow-up"></div>
           <input type="text" id="setDisplayName" placeholder="Name">
           <input type="text" id="setEmail" placeholder="E-Mail">
+
         </div>
         <h1>Connection Settings</h1>
         <form id="loginInfo">
@@ -193,34 +106,35 @@
 
       <div id="videospace">
         <!-- begin FULLSCREEN -->
-        <div class="fullscreen"><a title="Enter/Exit Fullscreen" onclick='buttonClick("#fullScreen", "icon-full-screen jicon-exit-full-screen");Toolbar.toggleFullScreen();'><i id="fullScreen" class="icon-full-screen"></i></a></div>
+        <div class="fullscreen"><a title="Enter/Exit Fullscreen"><i id="toolbar_button_fullScreen" class="icon-full-screen"></i></a></div>
         <!-- end FULLSCREEN -->
 
         <!-- begin NAVIGATION OPTION -->
         <div class="nav-option">
           <ul>
-            <li  onclick="Toolbar.openLockDialog();">
-              <a  title="Lock/Unlock Room"><i id="lockIcon" class="icon-lock"></i></a>
+            <li>
+              <a  title="Lock/Unlock Room"><i id="toolbar_button_security" class="icon-lock"></i></a>
               <span>Lock Room</span>
             </li>
-            <li onclick="Toolbar.openLinkDialog();">
-              <a  title="Invite others"><i class="icon-add-contact"></i></a>
+            <li>
+              <a  title="Invite others"><i id="toolbar_button_link" class="icon-add-contact"></i></a>
               <span>Invite others</span>
             </li>
-            <li onclick='BottomToolbar.toggleChat();'>
-              <a  title="Open/Close chat"><i id="chatBottomButton" class="icon-comment"><span id="bottomUnreadMessages"></span></i></a>
+            <li>
+              <a  title="Open/Close chat"><i id="bottom_toolbar_chat" class="icon-comment"><span id="bottomUnreadMessages"></span></i></a>
               <span>Open chat</span>
             </li>
-            <li onclick="toggleScreenSharing();">
-              <a title="Share screen"><i class="icon-desktop"></i></a>
+            <li>
+              <a title="Share screen"><i id ="toolbar_button_desktopsharing" class="icon-desktop"></i></a>
               <span>Share screen</span>
             </li>
-            <li onclick='callSipButtonClicked();'>
-              <a title="Call number"><i class="icon-phone"></i></a>
+            <li>
+              <a title="Call number"><i id ="toolbar_button_sip" class="icon-phone"></i></a>
               <span>Call number</span>
             </li>
           </ul>
         </div>
+
         <!-- end NAVIGATION OPTION -->
 
         <div id="largeVideoContainer" class="videocontainer">
@@ -236,33 +150,34 @@
         </div>
 
         <div id="remoteVideos">
-                <span id="localVideoContainer" class="videocontainer">
-                    <span id="localNick" class="nick"></span>
-                    <span id="localVideoWrapper">
-                        <!--<video id="localVideo" autoplay oncontextmenu="return false;" muted></video> - is now per stream generated -->
-                    </span>
 
-                    <span id="localMute">
-                      <span class="localOptions_span">
-                        <a class="optionMuteButton" title="Mute Mic On/off" onclick='toggleAudio();'> <i id="mute" class="icon-micro"  ></i></a>
-                      </span>
-                      <span class="localOptions_span">
-                        <a class="optionMuteButton" title="Start/Stop Camera" onclick=' toggleVideo();'> <i id="videoMute" class="icon-videocam"  ></i></a>
-                      </span>
-                    </span>
+          <span id="localVideoContainer" class="videocontainer">
+              <span id="localNick" class="nick"></span>
+              <span id="localVideoWrapper">
+                  <!--<video id="localVideo" autoplay oncontextmenu="return false;" muted></video> - is now per stream generated -->
+              </span>
 
-                    <audio id="localAudio" autoplay oncontextmenu="return false;" muted></audio>
-                    <span class="focusindicator"></span>
-                    <!--<div class="connectionindicator">
-                        <span class="connection connection_empty"><i class="icon-connection"></i></span>
-                        <span class="connection connection_full"><i class="icon-connection"></i></span>
-                    </div>-->
+              <span id="localMute">
+                <span class="localOptions_span">
+                  <a class="optionMuteButton" title="Mute Mic On/off" onclick='toggleAudio();'> <i id="mute" class="icon-micro"  ></i></a>
                 </span>
+                <span class="localOptions_span">
+                  <a class="optionMuteButton" title="Start/Stop Camera" onclick=' toggleVideo();'> <i id="videoMute" class="icon-videocam"  ></i></a>
+                </span>
+              </span>
+
+              <audio id="localAudio" autoplay oncontextmenu="return false;" muted></audio>
+              <span class="focusindicator"></span>
+              <!--<div class="connectionindicator">
+                  <span class="connection connection_empty"><i class="icon-connection"></i></span>
+                  <span class="connection connection_full"><i class="icon-connection"></i></span>
+              </div>-->
+
+          </span>
           <audio id="userJoined" src="sounds/joined.wav" preload="auto"></audio>
           <audio id="userLeft" src="sounds/left.wav" preload="auto"></audio>
         </div>
-
-        <div class="close-session"><a title="Exit Session" onclick='hangup();'><span>Quit</span><i class="icon-exit"></i></a></div>
+        <div class="close-session"><a title="Exit Session"><span>Quit</span><i id="toolbar_button_hangup" class="icon-exit"></i></a></div>
 
       </div>
       <div id="chatspace">
@@ -281,6 +196,7 @@
           <div id="smileys" onclick="Chat.toggleSmileys()">
             <img src="images/smile.svg"/>
           </div>
+
         </div>
       </div>
       <div id="contactlist">
