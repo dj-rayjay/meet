@@ -414,13 +414,11 @@ var VideoLayout = (function (my) {
     };
 
     my.changeLocalStream = function (stream) {
-        connection.jingle.localAudio = stream;
-        VideoLayout.changeLocalVideo(stream, true);
+        VideoLayout.changeLocalVideo(stream);
     };
 
     my.changeLocalAudio = function(stream) {
-        connection.jingle.localAudio = stream;
-        RTC.attachMediaStream($('#localAudio'), stream);
+        RTC.attachMediaStream($('#localAudio'), stream.getOriginalStream());
         document.getElementById('localAudio').autoplay = true;
         document.getElementById('localAudio').volume = 0;
         if (preMuted) {
@@ -429,11 +427,13 @@ var VideoLayout = (function (my) {
         }
     };
 
-    my.changeLocalVideo = function(stream, flipX) {
-        connection.jingle.localVideo = stream;
-
+    my.changeLocalVideo = function(stream) {
+        var flipX = true;
+        if(stream.type == "desktop")
+            flipX = false;
         var localVideo = document.createElement('video');
-        localVideo.id = 'localVideo_' + RTC.getStreamID(stream);
+        localVideo.id = 'localVideo_' +
+            RTC.getStreamID(stream.getOriginalStream());
         localVideo.autoplay = true;
         localVideo.volume = 0; // is it required if audio is separated ?
         localVideo.oncontextmenu = function () { return false; };
@@ -481,7 +481,7 @@ var VideoLayout = (function (my) {
             }
         );
         // Add stream ended handler
-        stream.onended = function () {
+        stream.getOriginalStream().onended = function () {
             localVideoContainer.removeChild(localVideo);
             VideoLayout.updateRemovedVideo(RTC.getVideoSrc(localVideo));
         };
@@ -1641,7 +1641,8 @@ var VideoLayout = (function (my) {
     /**
      * On video muted event.
      */
-    $(document).bind('videomuted.muc', function (event, jid, isMuted) {
+    $(document).bind('videomuted.muc', function (event, jid, value) {
+        var isMuted = (value === "true");
         if(!RTC.muteRemoteVideoStream(jid, isMuted))
             return;
 
@@ -1655,7 +1656,7 @@ var VideoLayout = (function (my) {
         }
 
         if (videoSpanId)
-            VideoLayout.showVideoIndicator(videoSpanId, isMuted);
+            VideoLayout.showVideoIndicator(videoSpanId, value);
     });
 
     /**

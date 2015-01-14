@@ -369,7 +369,7 @@ SimulcastSender.prototype.getLocalVideoStream = function () {
     return (this.displayedLocalVideoStream != null)
         ? this.displayedLocalVideoStream
         // in case we have no simulcast at all, i.e. we didn't perform the GUM
-        : connection.jingle.localVideo;
+        : RTC.localVideo.getOriginalStream();
 };
 
 function NativeSimulcastSender() {
@@ -384,7 +384,7 @@ NativeSimulcastSender.prototype._localVideoSourceCache = '';
 
 NativeSimulcastSender.prototype.reset = function () {
     this._localExplosionMap = {};
-    this._isUsingScreenStream = isUsingScreenStream;
+    this._isUsingScreenStream = desktopsharing.isUsingScreenStream();
 };
 
 NativeSimulcastSender.prototype._cacheLocalVideoSources = function (lines) {

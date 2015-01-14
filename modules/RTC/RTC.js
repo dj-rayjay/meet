@@ -24,10 +24,13 @@ var RTC = {
 
         eventEmitter.removeListener(eventType, listener);
     },
-    createLocalStream: function (stream, type) {
+    createLocalStream: function (stream, type, change) {
 
         var localStream =  new LocalStream(stream, type, eventEmitter);
-        this.localStreams.push(localStream);
+        //in firefox we have only one stream object
+        if(this.localStreams.length == 0 ||
+            this.localStreams[0].getOriginalStream() != stream)
+            this.localStreams.push(localStream);
         if(type == "audio")
         {
             this.localAudio = localStream;
@@ -36,8 +39,11 @@ var RTC = {
         {
             this.localVideo = localStream;
         }
-        eventEmitter.emit(StreamEventTypes.EVENT_TYPE_LOCAL_CREATED,
-            localStream);
+        var eventType = StreamEventTypes.EVENT_TYPE_LOCAL_CREATED;
+        if(change)
+            eventType = StreamEventTypes.EVENT_TYPE_LOCAL_CHANGED;
+
+        eventEmitter.emit(eventType, localStream);
         return localStream;
     },
     removeLocalStream: function (stream) {
@@ -93,6 +99,11 @@ var RTC = {
         this.dispose();
     },
     start: function () {
+        var self = this;
+        desktopsharing.addListener(
+            function (stream, isUsingScreenStream, callback) {
+                self.changeLocalVideo(stream, isUsingScreenStream, callback);
+            }, DesktopSharingEventTypes.NEW_STREAM_CREATED);
         this.rtcUtils = new RTCUtils(this);
         this.rtcUtils.obtainAudioAndVideoPermissions();
     },
@@ -111,12 +122,38 @@ var RTC = {
         if(!stream)
             return false;
 
-        var isMuted = (value === "true");
-        if (isMuted != stream.muted) {
-            stream.setMute(isMuted);
+        if (value != stream.muted) {
+            stream.setMute(value);
             return true;
         }
         return false;
+    },
+    switchVideoStreams: function (new_stream) {
+        this.localVideo.stream = new_stream;
+
+        this.localStreams = [];
+
+        //in firefox we have only one stream object
+        if (this.localAudio.getOriginalStream() != new_stream)
+            this.localStreams.push(this.localAudio);
+        this.localStreams.push(this.localVideo);
+    },
+    changeLocalVideo: function (stream, isUsingScreenStream, callback) {
+        var oldStream = this.localVideo.getOriginalStream();
+        var type = (isUsingScreenStream? "desktop" : "video");
+        RTC.localVideo = this.createLocalStream(stream, type, true);
+        // Stop the stream to trigger onended event for old stream
+        oldStream.stop();
+        if (activecall) {
+            // FIXME: will block switchInProgress on true value in case of exception
+            activecall.switchStreams(stream, oldStream, callback);
+        } else {
+            // We are done immediately
+            console.error("No conference handler");
+            UI.messageHandler.showError('Error',
+                'Unable to switch video stream.');
+            callback();
+        }
     }
 
 };
