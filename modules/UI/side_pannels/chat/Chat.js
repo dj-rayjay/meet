@@ -18,7 +18,7 @@ function setVisualNotification(show) {
     var unreadMsgBottomElement = document.getElementById('bottomUnreadMessages');
 
     //var glower = $('#chatButton');
-    var bottomGlower = $('#chatBottomButton');
+    var bottomGlower = $('#bottom_toolbar_chat');
 
     if (unreadMessages) {
         //unreadMsgElement.innerHTML = unreadMessages.toString();
@@ -39,7 +39,7 @@ function setVisualNotification(show) {
         //        '; left:' + leftIndent + ';');
 
         var chatBottomButtonElement
-          = document.getElementById('chatBottomButton').parentNode;
+          = document.getElementById('bottom_toolbar_chat').parentNode;
         var bottomLeftIndent = (Util.getTextWidth(chatBottomButtonElement) -
           Util.getTextWidth(unreadMsgBottomElement)) / 2;
         var bottomTopIndent = (Util.getTextHeight(chatBottomButtonElement) -
